@@ -1,0 +1,19 @@
+version: "3"
+services:
+  node:
+    image: node:16-slim
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    working_dir: /app
+    command: >
+      bash -c "yarn && yarn start"
+    ports:
+      - ${IP}:${PORT}:3000
+    tty: true
+    stdin_open: true
+
+volumes:
+  node_modules:
