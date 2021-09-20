@@ -1,0 +1,14 @@
+@import "../common/constants.module";
+@import "../common/baseDesign.module";
+
+.container {
+  //幅を決め、上下に良い感じに余白取って、中央に配置
+  width: 500px;
+  margin: 50px auto;
+  //テキスト系を中央に配置
+  text-align: center;
+  
+  .pageTitle {
+	font-size: $LargeFontSize;
+  }
+}

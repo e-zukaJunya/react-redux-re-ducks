@@ -1,0 +1,53 @@
+@import "../common/constants.module";
+
+.header {
+  //両端にくっつける形で中身を均等配置
+  display: flex;
+  justify-content: space-between;
+  
+  background-color: $mainColor;
+  
+  min-height: 70px;
+  
+  //左詰めの要素
+  .headerLeft {
+	//高さは親要素に依存
+	height: 100%;
+	//均等に横並び
+	display: flex;
+	//縦位置の中心に揃える
+	align-items: center;
+	
+	//ボタン状態のロゴのラッパー
+	.logoButton {
+	  //余白とって見た目調整
+	  padding: 5px;
+	  //高さは親要素に依存させる
+	  height: 100%;
+	  
+	  //ロゴ実体
+	  img {
+		height: 45px;
+	  }
+	}
+	
+	//アプリタイトル
+	.appTitle {
+	  color: $mainWhite;
+	  //デフォの上下マージンを消して左右に良い感じに余白
+	  margin: 0 10px;
+	  //何となくのサイズ
+	  font-size: 24px;
+	}
+  }
+  
+  .headerRight {
+	//高さは親要素に依存
+	height: 100%;
+	//均等に横並び
+	//今1個しか物がないけど
+	display: flex;
+	//縦位置の中心に揃える
+	align-items: center;
+  }
+}

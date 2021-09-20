@@ -1,0 +1,18 @@
+@import "../common/constants.module";
+@import "../common/baseDesign.module";
+
+//入力フォーム
+.inputArea {
+  //上下余白
+  padding: 20px 0;
+  
+  .inputTextFieldOutline {
+	//枠線の色指定
+	border-color: $textFieldOutlineColor;
+  }
+  
+  .loginButton {
+	@include mediumButtonSize;
+	@include basePositiveButtonColor;
+  }
+}

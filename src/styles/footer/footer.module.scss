@@ -1,0 +1,10 @@
+footer {
+  //フッターの色の値は共通で管理する必要はないかな
+  background-color: lightgrey;
+}
+
+//コピーライトの文字列
+.copyright  {
+  //pタグデフォルトのマージンが邪魔なので0に
+  margin: 0;
+}

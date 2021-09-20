@@ -3,6 +3,7 @@ services:
   node:
     image: node:16-slim
     environment:
+      # activate hot reload
       - CHOKIDAR_USEPOLLING=true
     volumes:
       - .:/app
@@ -12,8 +13,10 @@ services:
       bash -c "yarn && yarn start"
     ports:
       - ${IP}:${PORT}:3000
-    tty: true
-    stdin_open: true
+    env_file:
+      - .env
+      # デフォでlocal適用
+      - .env.local
 
 volumes:
   node_modules:
