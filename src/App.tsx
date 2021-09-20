@@ -41,36 +41,11 @@ const App: React.FC = () => {
                 <div className={styles.app}>
                     <AppHeader />
                     <Switch>
-                        <Route
-                            exact
-                            path={pagePath.ROOT}
-                            key={pagePath.ROOT}
-                            component={Sample}
-                        />
-                        <Route
-                            exact
-                            path={pagePath.LOGIN}
-                            key={pagePath.LOGIN}
-                            component={Login}
-                        />
-                        <Route
-                            exact
-                            path={pagePath.PAGE2}
-                            key={pagePath.PAGE2}
-                            component={Forms}
-                        />
-                        <Route
-                            exact
-                            path={pagePath.PAGE3}
-                            key={pagePath.PAGE3}
-                            component={List}
-                        />
-                        <Route
-                            exact
-                            path={pagePath.OTHER}
-                            key={pagePath.OTHER}
-                            component={Other}
-                        />
+                        <Route exact path={pagePath.ROOT} key={pagePath.ROOT} component={Sample} />
+                        <Route exact path={pagePath.LOGIN} key={pagePath.LOGIN} component={Login} />
+                        <Route exact path={pagePath.PAGE2} key={pagePath.PAGE2} component={Forms} />
+                        <Route exact path={pagePath.PAGE3} key={pagePath.PAGE3} component={List} />
+                        <Route exact path={pagePath.OTHER} key={pagePath.OTHER} component={Other} />
                     </Switch>
                     <AppFooter />
 

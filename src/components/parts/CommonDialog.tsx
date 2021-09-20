@@ -1,9 +1,4 @@
-import {
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-} from '@material-ui/core'
+import { Dialog, DialogActions, DialogContent, DialogContentText } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
 import * as React from 'react'
 import styles from 'styles/common/dialog.module.scss'
@@ -37,26 +32,15 @@ const CommonDialog: React.FC<Props> = (props) => {
         <Dialog open={props.open} onClose={props.doDisagree}>
             <DialogContent>
                 <div className={commonStyles.displayLinebreak}>
-                    <DialogContentText className={styles.infoDescription}>
-                        {props.mainMessage}
-                    </DialogContentText>
+                    <DialogContentText className={styles.infoDescription}>{props.mainMessage}</DialogContentText>
                 </div>
             </DialogContent>
             <DialogActions className={styles.actions}>
-                <Button
-                    className={styles.agreeButton}
-                    onClick={props.doDisagree}
-                >
+                <Button className={styles.agreeButton} onClick={props.doDisagree}>
                     {confirm ? agreeButtonMessage : closeButtonMessage}
                 </Button>
-                <div
-                    style={{ display: confirm ? '' : 'none' }}
-                    className={styles.disAgreeButtonArea}
-                >
-                    <Button
-                        className={styles.disAgreeButton}
-                        onClick={props.doDisagree}
-                    >
+                <div style={{ display: confirm ? '' : 'none' }} className={styles.disAgreeButtonArea}>
+                    <Button className={styles.disAgreeButton} onClick={props.doDisagree}>
                         {disagreeButtonMessage}
                     </Button>
                 </div>

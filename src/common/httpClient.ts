@@ -33,10 +33,7 @@ const errorCallback = <T>(err: AxiosError<T>) => err
  * @param option ヘッダーとクエリパラメータがある場合は指定
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const apiGetRequest = async <T, U>(
-    path: string,
-    option: { header?: any; queryPram?: any } = {}
-) => {
+export const apiGetRequest = async <T, U>(path: string, option: { header?: any; queryPram?: any } = {}) => {
     return await axiosInstance
         .get<T>(path, {
             params: option.queryPram,
@@ -69,10 +66,7 @@ export const apiPostRequest = async <T, U>(
  * @param option ヘッダー、クエリパラメータ、ボディがある場合は指定
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const apiPutRequest = async <T, U>(
-    path: string,
-    option: { header?: any; queryPram?: any; body?: any } = {}
-) => {
+export const apiPutRequest = async <T, U>(path: string, option: { header?: any; queryPram?: any; body?: any } = {}) => {
     return await axiosInstance
         .put<T>(path, option.body, {
             params: option.queryPram,

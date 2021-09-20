@@ -18,9 +18,7 @@ const Tab: React.FC<TabProps> = React.memo((props) => {
     const location = useLocation()
     return (
         <Button
-            className={
-                location.pathname === props.to ? styles.selectedTab : styles.tab
-            }
+            className={location.pathname === props.to ? styles.selectedTab : styles.tab}
             onClick={() => navigator(props.to)}
         >
             {props.label}
@@ -31,9 +29,7 @@ const Tab: React.FC<TabProps> = React.memo((props) => {
 //ヘッダーのタブ全体
 const HeaderTabs: React.FC = () => {
     const tabDataList = useTabList()
-    const tabList = tabDataList.map((tab) => (
-        <Tab label={tab.label} to={tab.path} key={tab.path} />
-    ))
+    const tabList = tabDataList.map((tab) => <Tab label={tab.label} to={tab.path} key={tab.path} />)
     return <div>{tabList}</div>
 }
 

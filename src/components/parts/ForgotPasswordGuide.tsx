@@ -8,9 +8,7 @@ const ForgotPasswordGuide: React.FC = () => {
         <p>
             {loginLabels.LINK_RESET_TITLE}
             {/*リンク風になっている部分*/}
-            <span className={styles.passwordLink}>
-                {loginLabels.LINK_RESET_HERE}
-            </span>
+            <span className={styles.passwordLink}>{loginLabels.LINK_RESET_HERE}</span>
         </p>
     )
 }

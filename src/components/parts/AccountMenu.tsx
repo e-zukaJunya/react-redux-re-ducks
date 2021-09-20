@@ -30,12 +30,8 @@ const AccountMenu: React.FC<Props> = (props) => {
                 horizontal: 'right',
             }}
         >
-            <MenuItem onClick={() => navigator(pagePath.LOGIN)}>
-                {accountMenuLabels.LOGOUT}
-            </MenuItem>
-            <MenuItem onClick={props.doClose}>
-                {accountMenuLabels.CHANGE_PASSWORD}
-            </MenuItem>
+            <MenuItem onClick={() => navigator(pagePath.LOGIN)}>{accountMenuLabels.LOGOUT}</MenuItem>
+            <MenuItem onClick={props.doClose}>{accountMenuLabels.CHANGE_PASSWORD}</MenuItem>
         </Menu>
     )
 }

@@ -17,10 +17,7 @@ const Header: React.FC = () => {
             {/*左詰め要素*/}
             <div className={styles.headerLeft}>
                 {/*ただのボタンで内部にコンポーネント入れるとspanタグが出現するのでButtonBaseを使用*/}
-                <ButtonBase
-                    className={styles.logoButton}
-                    onClick={() => navigator(pagePath.ROOT)}
-                >
+                <ButtonBase className={styles.logoButton} onClick={() => navigator(pagePath.ROOT)}>
                     <img src={logo} alt="logo" />
                 </ButtonBase>
 

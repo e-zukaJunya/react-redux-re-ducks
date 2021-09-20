@@ -7,14 +7,11 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 const Other = () => {
-    const [confDialog, openConfDialog, closeConfDialog] = useBooleanState(false)
-    const [notifDialog, openNotifDialog, closeNotifDialog] =
-        useBooleanState(false)
+    const [confDialog, confDialogSetter] = useBooleanState(false)
+    const [notifDialog, notifDialogSetter] = useBooleanState(false)
 
     const users = useSelector(getUsers)
-    const usersParagraph = users.map((item: string, idx: number) => (
-        <p key={idx}>{item}</p>
-    ))
+    const usersParagraph = users.map((item: string, idx: number) => <p key={idx}>{item}</p>)
     const [setUsers, disposeUsers] = useUsers()
 
     //API呼び出しサンプル
@@ -70,29 +67,23 @@ const Other = () => {
                     <Button onClick={setUsers}>{'ユーザーのセット'}</Button>
                 </div>
                 <div>
-                    <Button onClick={disposeUsers}>
-                        {'onClickDisposeUser'}
-                    </Button>
+                    <Button onClick={disposeUsers}>{'onClickDisposeUser'}</Button>
                 </div>
             </div>
 
             <div>
-                <Button onClick={openConfDialog}>{'確認ダイアログ'}</Button>
-                <Button onClick={openNotifDialog}>{'通知ダイアログ'}</Button>
+                <Button onClick={confDialogSetter.setTrue}>{'確認ダイアログ'}</Button>
+                <Button onClick={notifDialogSetter.setTrue}>{'通知ダイアログ'}</Button>
             </div>
 
             <CommonDialog
                 open={confDialog}
                 confirm
                 mainMessage={'確認ダイアログ'}
-                doAgree={closeConfDialog}
-                doDisagree={closeConfDialog}
+                doAgree={confDialogSetter.setFalse}
+                doDisagree={confDialogSetter.setFalse}
             />
-            <CommonDialog
-                open={notifDialog}
-                mainMessage={'通知ダイアログ'}
-                doDisagree={closeNotifDialog}
-            />
+            <CommonDialog open={notifDialog} mainMessage={'通知ダイアログ'} doDisagree={notifDialogSetter.setFalse} />
 
             {/*<Button onClick={() => onClickDispatch('A1')}>{'非同期処理'}</Button>*/}
 

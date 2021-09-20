@@ -8,9 +8,7 @@ import { DateTime } from 'luxon'
  * booleanの値をlocal stateとして扱うとき用
  * @param init 初期値
  */
-export const useBooleanState = (
-    init: boolean
-): [boolean, () => void, () => void] => {
+export const useBooleanState = (init: boolean): [boolean, { setTrue: () => void; setFalse: () => void }] => {
     const [state, setState] = useState<boolean>(init)
 
     const setTrue = useCallback(() => {
@@ -21,7 +19,7 @@ export const useBooleanState = (
         setState(false)
     }, [])
 
-    return [state, setTrue, setFalse]
+    return [state, { setTrue, setFalse }]
 }
 
 /**
@@ -29,13 +27,13 @@ export const useBooleanState = (
  * @param init 初期値
  */
 export const useToggleBoolean = (init: boolean): [boolean, () => void] => {
-    const [active, setTrue, setFalse] = useBooleanState(init)
+    const [state, setter] = useBooleanState(init)
 
     const toggle = useCallback(() => {
-        active ? setFalse() : setTrue()
-    }, [active])
+        state ? setter.setFalse() : setter.setTrue()
+    }, [state])
 
-    return [active, toggle]
+    return [state, toggle]
 }
 
 /**
@@ -46,17 +44,16 @@ export const useStringState = (
     init = ''
 ): [
     string,
-    (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void,
-    () => void
+    {
+        update: (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void
+        reset: () => void
+    }
 ] => {
     const [state, setState] = useState<string>(init)
 
-    const update = useCallback(
-        (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-            setState(e.target.value)
-        },
-        []
-    )
+    const update = useCallback((e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+        setState(e.target.value)
+    }, [])
 
     const reset = useCallback(() => {
         setState('')
@@ -78,10 +75,7 @@ export const usePathName = () => {
  */
 export const usePathNameList = () => {
     const pathname = usePathName()
-    return useMemo(
-        () => pathname.split('/').filter((x) => x !== ''),
-        [pathname]
-    )
+    return useMemo(() => pathname.split('/').filter((x) => x !== ''), [pathname])
 }
 
 /**

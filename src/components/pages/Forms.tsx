@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-    useBooleanState,
-    useStringState,
-    useToggleBoolean,
-} from 'hooks/common/commonHooks'
+import { useBooleanState, useStringState, useToggleBoolean } from 'hooks/common/commonHooks'
 import { Button, TextField } from '@material-ui/core'
 import { useValidation } from 'hooks/common/validationHooks'
 import { useOnKeyPressValidInput } from 'hooks/forms/formsHooks'
@@ -21,12 +17,7 @@ const Forms = () => {
     const validator = useValidation()
     // コールバックが10個以上とか多くなりすぎると微妙かもしれんが、コンポーネントの見通しが悪くなるより保守性はマシ
     // というかそれは1つのhookがでかすぎる疑惑なので処理を分割したほうが見通しよくテスタブルかも
-    const handleKeyPress = useOnKeyPressValidInput(
-        inputVal2,
-        validator,
-        setTrue,
-        setFalse
-    )
+    const handleKeyPress = useOnKeyPressValidInput(inputVal2, validator, setTrue, setFalse)
 
     return (
         <div>
@@ -44,12 +35,7 @@ const Forms = () => {
                 <Button onClick={toggle}>不活性化</Button>
             </div>
             <div>
-                <TextField
-                    label="入力チェック"
-                    value={inputVal2}
-                    onChange={update2}
-                    onKeyPress={handleKeyPress}
-                />
+                <TextField label="入力チェック" value={inputVal2} onChange={update2} onKeyPress={handleKeyPress} />
                 {showErr && <p>入力チェックエラー</p>}
             </div>
         </div>

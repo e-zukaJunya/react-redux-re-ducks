@@ -20,10 +20,7 @@ const pageSlice = createSlice({
     initialState,
     reducers: {
         //共通通知ダイアログを開く
-        setNoticeDialog: (
-            state,
-            action: PayloadAction<PayloadTypes.NoticeDialog>
-        ) => {
+        setNoticeDialog: (state, action: PayloadAction<PayloadTypes.NoticeDialog>) => {
             state.noticeDialog = action.payload
         },
         //共通通知ダイアログを閉じる
@@ -38,5 +35,4 @@ const pageSlice = createSlice({
 })
 
 export default pageSlice.reducer
-export const { setNoticeDialog, closeNoticeDialog, toggleProgress } =
-    pageSlice.actions
+export const { setNoticeDialog, closeNoticeDialog, toggleProgress } = pageSlice.actions

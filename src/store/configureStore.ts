@@ -35,8 +35,7 @@ export const store = configureStore({
     // reducerの適用
     reducer: rootReducer,
     // redux関連middlewareの適用
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(logger).concat(routerMiddleware(history)),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger).concat(routerMiddleware(history)),
 })
 
 // storeの持つdispatcherの型

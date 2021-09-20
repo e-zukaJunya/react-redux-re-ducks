@@ -8,19 +8,13 @@ import AccountMenu from 'components/parts/AccountMenu'
 //ヘッダーのタブ全体
 const AccountButton: React.FC = () => {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
-    const handleClick = useCallback(
-        (event) => setAnchorEl(event.currentTarget),
-        []
-    )
+    const handleClick = useCallback((event) => setAnchorEl(event.currentTarget), [])
     return (
         <div>
             <IconButton className={styles.iconButton} onClick={handleClick}>
                 <AccountCircle />
             </IconButton>
-            <AccountMenu
-                anchorEl={anchorEl}
-                doClose={() => setAnchorEl(null)}
-            />
+            <AccountMenu anchorEl={anchorEl} doClose={() => setAnchorEl(null)} />
         </div>
     )
 }

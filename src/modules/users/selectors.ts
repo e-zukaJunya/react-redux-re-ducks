@@ -5,6 +5,4 @@ import { RootState } from 'store/configureStore'
 const usersSelector = (state: RootState) => state.users.users
 
 // 取得したstateをさらに加工する場合
-export const getUsers = createSelector([usersSelector], (users) =>
-    users.map((item) => item.name)
-)
+export const getUsers = createSelector([usersSelector], (users) => users.map((item) => item.name))

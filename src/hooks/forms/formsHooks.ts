@@ -10,12 +10,7 @@ import { CharType } from 'constants/enums'
  */
 export const useOnKeyPressValidInput = (
     val: string,
-    validator: (
-        val: string,
-        chartType: CharType,
-        max: number,
-        min: number
-    ) => boolean,
+    validator: (val: string, chartType: CharType, max: number, min: number) => boolean,
     setTrue: () => void,
     setFalse: () => void
 ) => {
