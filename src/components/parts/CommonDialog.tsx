@@ -1,20 +1,25 @@
-import {Dialog, DialogActions, DialogContent, DialogContentText} from '@material-ui/core'
+import {
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+} from '@material-ui/core'
 import Button from '@material-ui/core/Button'
 import * as React from 'react'
 import styles from 'styles/common/dialog.module.scss'
 import commonStyles from 'styles/common/baseDesign.module.scss'
-import {dialogButton} from 'constants/labels'
+import { dialogButton } from 'constants/labels'
 
 interface Props {
-    open: boolean,
+    open: boolean
     // 確認ダイアログかどうか
-    confirm?: boolean,
-    mainMessage: string,
-    agreeButtonMessage?: string,
-    disagreeButtonMessage?: string,
-    closeButtonMessage?: string,
-    doAgree?: () => void,
-    doDisagree: () => void,
+    confirm?: boolean
+    mainMessage: string
+    agreeButtonMessage?: string
+    disagreeButtonMessage?: string
+    closeButtonMessage?: string
+    doAgree?: () => void
+    doDisagree: () => void
 }
 
 // 共通確認ポップアップ
@@ -24,15 +29,12 @@ const CommonDialog: React.FC<Props> = (props) => {
         confirm = false,
         agreeButtonMessage = dialogButton.OK,
         disagreeButtonMessage = dialogButton.BACK,
-        closeButtonMessage = dialogButton.CLOSE
+        closeButtonMessage = dialogButton.CLOSE,
     } = props
 
     //画面表示
     return (
-        <Dialog
-            open={props.open}
-            onClose={props.doDisagree}
-        >
+        <Dialog open={props.open} onClose={props.doDisagree}>
             <DialogContent>
                 <div className={commonStyles.displayLinebreak}>
                     <DialogContentText className={styles.infoDescription}>
@@ -41,15 +43,20 @@ const CommonDialog: React.FC<Props> = (props) => {
                 </div>
             </DialogContent>
             <DialogActions className={styles.actions}>
-                <Button className={styles.agreeButton} onClick={props.doDisagree}>
+                <Button
+                    className={styles.agreeButton}
+                    onClick={props.doDisagree}
+                >
                     {confirm ? agreeButtonMessage : closeButtonMessage}
                 </Button>
                 <div
-                    style={{display: confirm ? '' : 'none'}}
-                    className={styles.disAgreeButtonArea}>
+                    style={{ display: confirm ? '' : 'none' }}
+                    className={styles.disAgreeButtonArea}
+                >
                     <Button
                         className={styles.disAgreeButton}
-                        onClick={props.doDisagree}>
+                        onClick={props.doDisagree}
+                    >
                         {disagreeButtonMessage}
                     </Button>
                 </div>

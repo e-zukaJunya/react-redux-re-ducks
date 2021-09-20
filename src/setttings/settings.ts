@@ -16,9 +16,9 @@ export const env = {
     COGNITO_ENDPOINT: process.env.REACT_APP_ENDPOINT,
     // 本番以外デバッグモードとしておく
     DEBUG:
-        (process.env.REACT_APP_STAGE === stages.LOCAL)
-        || (process.env.REACT_APP_STAGE === stages.DEV)
-        || (process.env.REACT_APP_STAGE === stages.STG)
+        process.env.REACT_APP_STAGE === stages.LOCAL ||
+        process.env.REACT_APP_STAGE === stages.DEV ||
+        process.env.REACT_APP_STAGE === stages.STG,
 }
 
 // amplifyに渡す情報(cognito用)

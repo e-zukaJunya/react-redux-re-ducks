@@ -1,7 +1,7 @@
-import {AppDispatch} from 'store/configureStore'
+import { AppDispatch } from 'store/configureStore'
 
 export interface SetUsers {
-    id: number,
+    id: number
     name: string
 }
 
@@ -9,7 +9,7 @@ export interface SetUsers {
  * APIリクエスト: ログイン
  */
 export interface requestAuthLogin {
-    loginID: string,
+    loginID: string
     password: string
 }
 
@@ -17,10 +17,10 @@ export interface requestAuthLogin {
  * APIリクエスト: パスワード変更
  */
 export interface requestAuthPasswordChange {
-    oldPassword: string,
-    newPassword: string,
-    dispatch: AppDispatch,
-    doClose: () => void,
+    oldPassword: string
+    newPassword: string
+    dispatch: AppDispatch
+    doClose: () => void
 }
 
 /**

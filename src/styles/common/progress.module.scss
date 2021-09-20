@@ -1,21 +1,21 @@
 //progress ringの背景部分
 .modal {
-  position: relative;
-  z-index: 1000000;
+    position: relative;
+    z-index: 1000000;
 }
 
 //progress ring本体
 .progress {
-  //位置を真ん中に調整
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  
-  &:focus {
-	//クリック時に枠線が出ないよ言うにするため
-	outline: none;
-  }
+    //位置を真ん中に調整
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
+    &:focus {
+        //クリック時に枠線が出ないよ言うにするため
+        outline: none;
+    }
 }

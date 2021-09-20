@@ -1,10 +1,13 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {testGet} from './operations'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { testGet } from './operations'
 import * as PayloadTypes from './types'
 // ↑ modules内のimportは相対でも良いかな。これらの階層が変わることは絶対にないから。
 
 const initialState = {
-    users: [{id: 0, name: 'alpha'}, {id: 1, name: 'bravo'}],
+    users: [
+        { id: 0, name: 'alpha' },
+        { id: 1, name: 'bravo' },
+    ],
 }
 
 const usersSlice = createSlice({
@@ -18,7 +21,7 @@ const usersSlice = createSlice({
         },
         disposeUsers: (state) => {
             state.users = []
-        }
+        },
     },
     // 外部で作成したAction（主に非同期Action）
     extraReducers: (builder) => {
@@ -36,8 +39,8 @@ const usersSlice = createSlice({
                 console.log('失敗')
                 //非同期処理失敗時のロジック
             })
-    }
+    },
 })
 
 export default usersSlice.reducer
-export const {setUsers, disposeUsers} = usersSlice.actions
+export const { setUsers, disposeUsers } = usersSlice.actions

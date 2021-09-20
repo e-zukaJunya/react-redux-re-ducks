@@ -9,7 +9,7 @@ export const loginLabels = {
     PASSWORD: 'パスワード',
     LOGIN_BUTTON: 'ログイン',
     LINK_RESET_TITLE: 'パスワードをお忘れの方は',
-    LINK_RESET_HERE: 'こちら'
+    LINK_RESET_HERE: 'こちら',
 }
 
 //ヘッダー

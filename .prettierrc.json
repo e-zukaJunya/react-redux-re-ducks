@@ -1,8 +1,5 @@
 {
-    // セミコロン梨
     "semi": false,
-    // タブは空白4つ
     "tabWidth": 4,
-    // クォーテーションはシングル
     "singleQuote": true
 }

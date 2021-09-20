@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from 'styles/login/forgotPasswordGuide.module.scss'
-import {loginLabels} from 'constants/labels'
+import { loginLabels } from 'constants/labels'
 
 // ログイン画面
 const ForgotPasswordGuide: React.FC = () => {
@@ -8,7 +8,9 @@ const ForgotPasswordGuide: React.FC = () => {
         <p>
             {loginLabels.LINK_RESET_TITLE}
             {/*リンク風になっている部分*/}
-            <span className={styles.passwordLink}>{loginLabels.LINK_RESET_HERE}</span>
+            <span className={styles.passwordLink}>
+                {loginLabels.LINK_RESET_HERE}
+            </span>
         </p>
     )
 }

@@ -1,20 +1,20 @@
-import {Button} from '@material-ui/core'
-import React from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {AppDispatch} from 'store/configureStore'
-import {useProgress, useUsers} from 'hooks/other/otherHooks'
-import {getUsers} from 'modules/users/selectors'
-import {useBooleanState} from 'hooks/common/commonHooks'
+import { Button } from '@material-ui/core'
 import CommonDialog from 'components/parts/CommonDialog'
+import { useBooleanState } from 'hooks/common/commonHooks'
+import { useProgress, useUsers } from 'hooks/other/otherHooks'
+import { getUsers } from 'modules/users/selectors'
+import React from 'react'
+import { useSelector } from 'react-redux'
 
 const Other = () => {
     const [confDialog, openConfDialog, closeConfDialog] = useBooleanState(false)
-    const [notifDialog, openNotifDialog, closeNotifDialog] = useBooleanState(false)
-
-    const dispatch: AppDispatch = useDispatch()
+    const [notifDialog, openNotifDialog, closeNotifDialog] =
+        useBooleanState(false)
 
     const users = useSelector(getUsers)
-    const usersParagraph = users.map((item: string, idx: number) => <p key={idx}>{item}</p>)
+    const usersParagraph = users.map((item: string, idx: number) => (
+        <p key={idx}>{item}</p>
+    ))
     const [setUsers, disposeUsers] = useUsers()
 
     //API呼び出しサンプル
@@ -70,7 +70,9 @@ const Other = () => {
                     <Button onClick={setUsers}>{'ユーザーのセット'}</Button>
                 </div>
                 <div>
-                    <Button onClick={disposeUsers}>{'onClickDisposeUser'}</Button>
+                    <Button onClick={disposeUsers}>
+                        {'onClickDisposeUser'}
+                    </Button>
                 </div>
             </div>
 

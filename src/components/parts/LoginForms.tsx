@@ -1,11 +1,10 @@
-import React, {useState} from 'react'
-import {Button, TextField} from '@material-ui/core'
+import React, { useState } from 'react'
+import { Button, TextField } from '@material-ui/core'
 import ExitToApp from '@material-ui/icons/ExitToApp'
 import styles from 'styles/login/loginForms.module.scss'
-import {loginLabels} from 'constants/labels'
-import {useNavigator} from 'hooks/common/commonHooks'
-import {pagePath} from 'constants/paths'
-
+import { loginLabels } from 'constants/labels'
+import { useNavigator } from 'hooks/common/commonHooks'
+import { pagePath } from 'constants/paths'
 
 // ログイン画面
 const LoginForms: React.FC = () => {
@@ -29,13 +28,13 @@ const LoginForms: React.FC = () => {
                     InputProps={{
                         // 上限を効かせてくれる
                         // 中のテキストフィールドに対してクラス名をつけたりもできる
-                        inputProps: {maxLength: 255},
+                        inputProps: { maxLength: 255 },
                         classes: {
                             // borderのスタイル効かせたいならこれ
-                            notchedOutline: styles.inputTextFieldOutline
-                        }
+                            notchedOutline: styles.inputTextFieldOutline,
+                        },
                     }}
-                    onChange={event => setLoginId(event.target.value)}
+                    onChange={(event) => setLoginId(event.target.value)}
                 />
             </div>
             <div className={styles.inputArea}>
@@ -51,13 +50,13 @@ const LoginForms: React.FC = () => {
                     InputProps={{
                         // 上限を効かせてくれる
                         // 中のテキストフィールドに対してクラス名をつけたりもできる
-                        inputProps: {maxLength: 16},
+                        inputProps: { maxLength: 16 },
                         classes: {
                             // borderのスタイル効かせたいならこれ
-                            notchedOutline: styles.inputTextFieldOutline
-                        }
+                            notchedOutline: styles.inputTextFieldOutline,
+                        },
                     }}
-                    onChange={event => setPassword(event.target.value)}
+                    onChange={(event) => setPassword(event.target.value)}
                 />
             </div>
             <div className={styles.inputArea}>
@@ -66,7 +65,7 @@ const LoginForms: React.FC = () => {
                     // 塗りつぶされたボタン
                     variant="contained"
                     // ボタン中のアイコン
-                    startIcon={<ExitToApp/>}
+                    startIcon={<ExitToApp />}
                     // 活性状態コントロール
                     disabled={!(loginId.trim() && password.trim())}
                     // クリックでとりあえずトップへ

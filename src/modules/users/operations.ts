@@ -1,12 +1,12 @@
-import {createAsyncThunk} from '@reduxjs/toolkit'
-import {RootState} from 'store/configureStore'
-import {axiosInstance} from 'common/httpClient'
-import {apiPath} from 'constants/paths'
-import {requestAuthPasswordChange} from 'modules/users/types'
-import {toggleProgress} from 'modules/pages/reducers'
+import { createAsyncThunk } from '@reduxjs/toolkit'
+import { RootState } from 'store/configureStore'
+import { axiosInstance } from 'common/httpClient'
+import { apiPath } from 'constants/paths'
+import { requestAuthPasswordChange } from 'modules/users/types'
+import { toggleProgress } from 'modules/pages/reducers'
 
 interface hogeRes {
-    id: number,
+    id: number
     name: string
 }
 
@@ -17,12 +17,13 @@ export const testGet = createAsyncThunk<number, string, { state: RootState }>(
     async (userId, thunkApi) => {
         console.log(userId)
 
-        const response = await axiosInstance.get<hogeRes>(apiPath.SAMPLE,)
-            .then(res => {
+        const response = await axiosInstance
+            .get<hogeRes>(apiPath.SAMPLE)
+            .then((res) => {
                 console.log(res)
                 return res
             })
-            .catch(err => {
+            .catch((err) => {
                 // なにか例外処理
                 console.log(err)
             })
@@ -50,7 +51,6 @@ export const testGet = createAsyncThunk<number, string, { state: RootState }>(
 export const postChangePassword = createAsyncThunk(
     'maintenance/auth/password/change',
     async (request: requestAuthPasswordChange) => {
-
         //プログレスを表示
         request.dispatch(toggleProgress(true))
 
@@ -94,4 +94,5 @@ export const postChangePassword = createAsyncThunk(
 
         //プログレスを非表示
         request.dispatch(toggleProgress(false))
-    })
+    }
+)

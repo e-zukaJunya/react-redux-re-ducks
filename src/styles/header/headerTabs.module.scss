@@ -1,19 +1,19 @@
 .tab {
-  //適当デザイン
-  width: 90px;
-  color: rgba(255, 255, 255, 1);
-  padding: 10px 5px;
-  border-radius: 5px;
-  
-  &:hover {
-	//うすい白をかぶせる
-	background-color: rgba(255, 255, 255, 0.5);
-  }
+    //適当デザイン
+    width: 90px;
+    color: rgba(255, 255, 255, 1);
+    padding: 10px 5px;
+    border-radius: 5px;
+
+    &:hover {
+        //うすい白をかぶせる
+        background-color: rgba(255, 255, 255, 0.5);
+    }
 }
 
 //選択済みタブ
 .selectedTab {
-  @extend .tab;
-  //うすい白をかぶせる
-  background-color: rgba(255, 255, 255, 0.3);
+    @extend .tab;
+    //うすい白をかぶせる
+    background-color: rgba(255, 255, 255, 0.3);
 }

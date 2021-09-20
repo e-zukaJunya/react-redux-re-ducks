@@ -12,6 +12,6 @@ export const CharType = {
     // 半角数字
     HarfNumeric: 3,
     // 全角文字
-    Full: 4
+    Full: 4,
 } as const
-export type CharType = typeof CharType[keyof typeof CharType];
+export type CharType = typeof CharType[keyof typeof CharType]

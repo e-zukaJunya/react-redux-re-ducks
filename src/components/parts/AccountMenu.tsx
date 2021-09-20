@@ -1,14 +1,14 @@
 import * as React from 'react'
-import {Menu, MenuItem} from '@material-ui/core'
-import {accountMenuLabels} from 'constants/labels'
-import {useNavigator} from 'hooks/common/commonHooks'
-import {pagePath} from 'constants/paths'
+import { Menu, MenuItem } from '@material-ui/core'
+import { accountMenuLabels } from 'constants/labels'
+import { useNavigator } from 'hooks/common/commonHooks'
+import { pagePath } from 'constants/paths'
 
 interface Props {
     // メニュー出現位置の座標となるHTML要素
-    anchorEl: null | HTMLElement,
+    anchorEl: null | HTMLElement
     // 閉じる時の挙動
-    doClose: () => void;
+    doClose: () => void
 }
 
 //アカウントメニュー
@@ -30,8 +30,12 @@ const AccountMenu: React.FC<Props> = (props) => {
                 horizontal: 'right',
             }}
         >
-            <MenuItem onClick={() => navigator(pagePath.LOGIN)}>{accountMenuLabels.LOGOUT}</MenuItem>
-            <MenuItem onClick={props.doClose}>{accountMenuLabels.CHANGE_PASSWORD}</MenuItem>
+            <MenuItem onClick={() => navigator(pagePath.LOGIN)}>
+                {accountMenuLabels.LOGOUT}
+            </MenuItem>
+            <MenuItem onClick={props.doClose}>
+                {accountMenuLabels.CHANGE_PASSWORD}
+            </MenuItem>
         </Menu>
     )
 }

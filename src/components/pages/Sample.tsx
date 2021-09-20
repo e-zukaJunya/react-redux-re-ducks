@@ -1,7 +1,7 @@
-import {pagePath} from 'constants/paths'
-import React, {useState} from 'react'
-import {Link} from 'react-router-dom'
-import {messages, words} from 'resources/messages'
+import { pagePath } from 'constants/paths'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { messages, words } from 'resources/messages'
 
 const Sample: React.FC = () => {
     // ローカルステートの例
@@ -18,8 +18,12 @@ const Sample: React.FC = () => {
             <div>{state.toString()}</div>
             {/*コールバックはなるべくuseCallbackで作成したものを割り当てるがよし*/}
             {/*これはローカルステートの動きを示すことを目的としたので面倒でそうしてない*/}
-            <button type={'button'} onClick={() => setState(true)}>true</button>
-            <button type={'button'} onClick={() => setState(false)}>false</button>
+            <button type={'button'} onClick={() => setState(true)}>
+                true
+            </button>
+            <button type={'button'} onClick={() => setState(false)}>
+                false
+            </button>
 
             {/*ページ遷移リンクの例*/}
             <div>

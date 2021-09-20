@@ -4,14 +4,14 @@ import { env } from 'setttings/settings'
 // 共通設定
 export const axiosInstance = axios.create({
     baseURL: env.API_URL,
-    withCredentials: true
+    withCredentials: true,
 })
 // リクエスト前処理
 axiosInstance.interceptors.request.use(
     // 前処理
-    async config => {
+    async (config) => {
         config.httpsAgent = {
-            KeepAlive: true
+            KeepAlive: true,
         }
         // todo cognitoとか使うならトークンの取得
         // const token = (await Auth.currentSession()).getIdToken().getJwtToken();
@@ -22,9 +22,7 @@ axiosInstance.interceptors.request.use(
 )
 
 //レスポンス処理（何もしない）
-axiosInstance.interceptors.response.use(
-    response => response,
-)
+axiosInstance.interceptors.response.use((response) => response)
 
 //catch時の型指定
 const errorCallback = <T>(err: AxiosError<T>) => err
@@ -35,11 +33,16 @@ const errorCallback = <T>(err: AxiosError<T>) => err
  * @param option ヘッダーとクエリパラメータがある場合は指定
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const apiGetRequest = async <T, U>(path: string, option: { header?: any, queryPram?: any } = {}) => {
-    return await axiosInstance.get<T>(path, {
-        params: option.queryPram,
-        headers: option.header
-    }).catch((err) => errorCallback<U>(err))
+export const apiGetRequest = async <T, U>(
+    path: string,
+    option: { header?: any; queryPram?: any } = {}
+) => {
+    return await axiosInstance
+        .get<T>(path, {
+            params: option.queryPram,
+            headers: option.header,
+        })
+        .catch((err) => errorCallback<U>(err))
 }
 
 /**
@@ -48,11 +51,16 @@ export const apiGetRequest = async <T, U>(path: string, option: { header?: any, 
  * @param option ヘッダー、クエリパラメータ、ボディがある場合は指定
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const apiPostRequest = async <T, U>(path: string, option: { header?: any, queryPram?: any, body?: any } = {}) => {
-    return await axiosInstance.post<T>(path, option.body, {
-        params: option.queryPram,
-        headers: option.header
-    }).catch((err) => errorCallback<U>(err))
+export const apiPostRequest = async <T, U>(
+    path: string,
+    option: { header?: any; queryPram?: any; body?: any } = {}
+) => {
+    return await axiosInstance
+        .post<T>(path, option.body, {
+            params: option.queryPram,
+            headers: option.header,
+        })
+        .catch((err) => errorCallback<U>(err))
 }
 
 /**
@@ -61,12 +69,16 @@ export const apiPostRequest = async <T, U>(path: string, option: { header?: any,
  * @param option ヘッダー、クエリパラメータ、ボディがある場合は指定
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const apiPutRequest = async <T, U>(path: string, option: { header?: any, queryPram?: any, body?: any } = {}) => {
-
-    return await axiosInstance.put<T>(path, option.body, {
-        params: option.queryPram,
-        headers: option.header
-    }).catch((err) => errorCallback<U>(err))
+export const apiPutRequest = async <T, U>(
+    path: string,
+    option: { header?: any; queryPram?: any; body?: any } = {}
+) => {
+    return await axiosInstance
+        .put<T>(path, option.body, {
+            params: option.queryPram,
+            headers: option.header,
+        })
+        .catch((err) => errorCallback<U>(err))
 }
 
 /**
@@ -75,10 +87,14 @@ export const apiPutRequest = async <T, U>(path: string, option: { header?: any, 
  * @param option ヘッダーとクエリパラメータがある場合は指定
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const apiDeleteRequest = async <T, U>(path: string, option: { header?: any, queryPram?: any } = {}):Promise<AxiosResponse<T> | AxiosError<U>> => {
-
-    return await axiosInstance.delete<T>(path, {
-        params: option.queryPram,
-        headers: option.header
-    }).catch((err) => errorCallback<U>(err))
+export const apiDeleteRequest = async <T, U>(
+    path: string,
+    option: { header?: any; queryPram?: any } = {}
+): Promise<AxiosResponse<T> | AxiosError<U>> => {
+    return await axiosInstance
+        .delete<T>(path, {
+            params: option.queryPram,
+            headers: option.header,
+        })
+        .catch((err) => errorCallback<U>(err))
 }
