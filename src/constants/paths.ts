@@ -6,6 +6,7 @@ export const pagePath = {
     PAGE2: '/page2',
     PAGE3: '/page3',
     OTHER: '/other',
+    IGNORE_ATUH: '/ignore_auth',
 }
 
 export const apiPath = {

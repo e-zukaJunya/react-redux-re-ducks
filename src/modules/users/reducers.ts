@@ -4,6 +4,8 @@ import * as PayloadTypes from './types'
 // ↑ modules内のimportは相対でも良いかな。これらの階層が変わることは絶対にないから。
 
 const initialState = {
+    id: '',
+    displayName: '',
     users: [
         { id: 0, name: 'alpha' },
         { id: 1, name: 'bravo' },

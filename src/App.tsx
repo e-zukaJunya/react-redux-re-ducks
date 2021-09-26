@@ -1,23 +1,26 @@
 import LuxonUtils from '@date-io/luxon'
 import { StylesProvider } from '@material-ui/core/styles'
 import { MuiPickersUtilsProvider } from '@material-ui/pickers'
+import Forms from 'components/pages/Forms'
+import IgnoreAuth from 'components/pages/IgnoreAuth'
+import List from 'components/pages/List'
 import Login from 'components/pages/Login'
 import Other from 'components/pages/Other'
 import Sample from 'components/pages/Sample'
+import CommonDialog from 'components/parts/CommonDialog'
+import AppFooter from 'components/parts/Footer'
+import GuestRoute from 'components/parts/GuestRoute'
+import AppHeader from 'components/parts/Header'
+import PrivateRoute from 'components/parts/PrivateRoute'
 import Progress from 'components/parts/Progress'
 import { pagePath } from 'constants/paths'
-import React from 'react'
-import { Route, Switch } from 'react-router-dom'
-import AppHeader from 'components/parts/Header'
-import CommonDialog from 'components/parts/CommonDialog'
-import { useDispatch, useSelector } from 'react-redux'
-import { noticeDialogSelector } from 'modules/pages/selectors'
 import { closeNoticeDialog } from 'modules/pages/reducers'
+import { noticeDialogSelector } from 'modules/pages/selectors'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Route, Switch } from 'react-router-dom'
 import { AppDispatch } from 'store/configureStore'
 import styles from 'styles/common/app.module.scss'
-import AppFooter from 'components/parts/Footer'
-import Forms from 'components/pages/Forms'
-import List from 'components/pages/List'
 
 // export const getId = async () => await Auth.currentAuthenticatedUser();
 
@@ -41,11 +44,15 @@ const App: React.FC = () => {
                 <div className={styles.app}>
                     <AppHeader />
                     <Switch>
-                        <Route exact path={pagePath.ROOT} key={pagePath.ROOT} component={Sample} />
-                        <Route exact path={pagePath.LOGIN} key={pagePath.LOGIN} component={Login} />
-                        <Route exact path={pagePath.PAGE2} key={pagePath.PAGE2} component={Forms} />
-                        <Route exact path={pagePath.PAGE3} key={pagePath.PAGE3} component={List} />
-                        <Route exact path={pagePath.OTHER} key={pagePath.OTHER} component={Other} />
+                        {/* 未認証の時のみ表示 */}
+                        <GuestRoute exact path={pagePath.LOGIN} key={pagePath.LOGIN} component={Login} />
+                        {/* 認証済みの時のみ表示 */}
+                        <PrivateRoute exact path={pagePath.ROOT} key={pagePath.ROOT} component={Sample} />
+                        <PrivateRoute exact path={pagePath.PAGE2} key={pagePath.PAGE2} component={Forms} />
+                        <PrivateRoute exact path={pagePath.PAGE3} key={pagePath.PAGE3} component={List} />
+                        <PrivateRoute exact path={pagePath.OTHER} key={pagePath.OTHER} component={Other} />
+                        {/* 認証状態を問わず表示 */}
+                        <Route exact path={pagePath.IGNORE_ATUH} key={pagePath.IGNORE_ATUH} component={IgnoreAuth} />
                     </Switch>
                     <AppFooter />
 
