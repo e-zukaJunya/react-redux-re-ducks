@@ -72,18 +72,18 @@ const Other = () => {
             </div>
 
             <div>
-                <Button onClick={confDialogSetter.setTrue}>{'確認ダイアログ'}</Button>
-                <Button onClick={notifDialogSetter.setTrue}>{'通知ダイアログ'}</Button>
+                <Button onClick={confDialogSetter.on}>{'確認ダイアログ'}</Button>
+                <Button onClick={notifDialogSetter.on}>{'通知ダイアログ'}</Button>
             </div>
 
             <CommonDialog
                 open={confDialog}
                 confirm
                 mainMessage={'確認ダイアログ'}
-                doAgree={confDialogSetter.setFalse}
-                doDisagree={confDialogSetter.setFalse}
+                doAgree={confDialogSetter.off}
+                doDisagree={confDialogSetter.off}
             />
-            <CommonDialog open={notifDialog} mainMessage={'通知ダイアログ'} doDisagree={notifDialogSetter.setFalse} />
+            <CommonDialog open={notifDialog} mainMessage={'通知ダイアログ'} doDisagree={notifDialogSetter.off} />
 
             {/*<Button onClick={() => onClickDispatch('A1')}>{'非同期処理'}</Button>*/}
 

@@ -5,6 +5,7 @@ import styles from 'styles/login/loginForms.module.scss'
 import { loginLabels } from 'constants/labels'
 import { useNavigator } from 'hooks/common/commonHooks'
 import { pagePath } from 'constants/paths'
+import { NormalTextField } from 'components/parts/NormalTextField'
 
 // ログイン画面
 const LoginForms: React.FC = () => {
@@ -14,6 +15,7 @@ const LoginForms: React.FC = () => {
     return (
         <div>
             <div className={styles.inputArea}>
+                <NormalTextField />
                 <TextField
                     // 枠で囲まれたタイプ
                     variant="outlined"

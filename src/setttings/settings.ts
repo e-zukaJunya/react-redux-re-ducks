@@ -1,5 +1,5 @@
 // ビルド時のステージごとの名称
-const stages = {
+const STAGES = {
     LOCAL: 'local',
     DEV: 'dev',
     STG: 'stg',
@@ -7,7 +7,7 @@ const stages = {
 }
 
 //環境変数をオブジェクトにまとめておく
-export const env = {
+export const ENV = {
     API_URL: process.env.REACT_APP_API_URL,
     cognito: '',
     AWS_REGION: process.env.REACT_APP_REGION,
@@ -16,25 +16,27 @@ export const env = {
     COGNITO_ENDPOINT: process.env.REACT_APP_ENDPOINT,
     // 本番以外デバッグモードとしておく
     DEBUG:
-        process.env.REACT_APP_STAGE === stages.LOCAL ||
-        process.env.REACT_APP_STAGE === stages.DEV ||
-        process.env.REACT_APP_STAGE === stages.STG,
+        process.env.REACT_APP_STAGE === STAGES.LOCAL ||
+        process.env.REACT_APP_STAGE === STAGES.DEV ||
+        process.env.REACT_APP_STAGE === STAGES.STG,
 }
 
 // amplifyに渡す情報(cognito用)
 export const AWS_CONFIG = {
     Auth: {
-        region: env.AWS_REGION,
-        userPoolId: env.COGNITO_USER_POOL_ID,
-        userPoolWebClientId: env.COGNITO_WEB_CLIENT_ID,
+        region: ENV.AWS_REGION,
+        userPoolId: ENV.COGNITO_USER_POOL_ID,
+        userPoolWebClientId: ENV.COGNITO_WEB_CLIENT_ID,
         storage: localStorage,
     },
     API: {
         endpoints: [
             {
-                endpoint: env.COGNITO_ENDPOINT,
-                region: env.AWS_REGION,
+                endpoint: ENV.COGNITO_ENDPOINT,
+                region: ENV.AWS_REGION,
             },
         ],
     },
 }
+
+export const SKIP_LOGIN = process.env.REACT_APP_STAGE === STAGES.LOCAL

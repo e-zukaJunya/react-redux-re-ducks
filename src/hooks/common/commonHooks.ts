@@ -1,43 +1,26 @@
-import React, { useCallback, useMemo, useState } from 'react'
-import { useLocation } from 'react-router-dom'
-import { push } from 'connected-react-router'
-import { useDispatch } from 'react-redux'
-import { DateTime } from 'luxon'
+import React, { useCallback, useState } from 'react'
+import { useToggle } from 'react-use'
 
 /**
  * booleanの値をlocal stateとして扱うとき用
  * @param init 初期値
  */
-export const useBooleanState = (init: boolean): [boolean, { setTrue: () => void; setFalse: () => void }] => {
-    const [state, setState] = useState<boolean>(init)
+export const useBooleanState = (init: boolean) => {
+    const [state, toggle] = useToggle(init)
 
-    const setTrue = useCallback(() => {
-        setState(true)
+    const on = useCallback(() => {
+        toggle(true)
     }, [])
 
-    const setFalse = useCallback(() => {
-        setState(false)
+    const off = useCallback(() => {
+        toggle(false)
     }, [])
 
-    return [state, { setTrue, setFalse }]
+    return [state, { on, off, toggle }] as const
 }
 
 /**
- * booleanの値を同じアクションで切り替える
- * @param init 初期値
- */
-export const useToggleBoolean = (init: boolean): [boolean, () => void] => {
-    const [state, setter] = useBooleanState(init)
-
-    const toggle = useCallback(() => {
-        state ? setter.setFalse() : setter.setTrue()
-    }, [state])
-
-    return [state, toggle]
-}
-
-/**
- * stringの値をlocal stateとして扱うとき用
+ * inputのtextやtextareaの値を扱うとき用
  * @param init 初期値
  */
 export const useStringState = (
@@ -59,45 +42,5 @@ export const useStringState = (
         setState('')
     }, [])
 
-    return [state, update, reset]
+    return [state, { update, reset }]
 }
-
-/**
- * pathnameの取得
- */
-export const usePathName = () => {
-    const location = useLocation()
-    return useMemo(() => location.pathname, [location.pathname])
-}
-
-/**
- * パスを分解して取得
- */
-export const usePathNameList = () => {
-    const pathname = usePathName()
-    return useMemo(() => pathname.split('/').filter((x) => x !== ''), [pathname])
-}
-
-/**
- * ページ遷移
- */
-export const useNavigator = () => {
-    const dispatch = useDispatch()
-    const location = useLocation()
-    return useCallback(
-        // 遷移先のパス
-        (to: string) => {
-            // 現在と同じパスには遷移を起こさない
-            if (to !== location.pathname) {
-                dispatch(push(to))
-            }
-        },
-        [location]
-    )
-}
-
-/**
- * 現在日時取得
- * もしかするとこういうのは普通にただの共通関数にでもしたほうが良いのかもしれない
- */
-export const useDtNow = () => DateTime.local().setLocale('ja')

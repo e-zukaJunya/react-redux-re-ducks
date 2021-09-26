@@ -1,23 +1,23 @@
 import React from 'react'
-import { useBooleanState, useStringState, useToggleBoolean } from 'hooks/common/commonHooks'
+import { useBooleanState, useStringState } from 'hooks/common/commonHooks'
 import { Button, TextField } from '@material-ui/core'
 import { useValidation } from 'hooks/common/validationHooks'
 import { useOnKeyPressValidInput } from 'hooks/forms/formsHooks'
 
 const Forms = () => {
     // 真偽値のtoggleサンプル
-    const [active, toggle] = useToggleBoolean(true)
+    const [active, setter] = useBooleanState(false)
 
     // inputを扱うときのサンプル
-    const [inputVal, update, reset] = useStringState('初期値')
+    const [inputVal, textSetter] = useStringState('初期値')
 
     // 入力チェックサンプル
-    const [inputVal2, update2] = useStringState()
-    const [showErr, setTrue, setFalse] = useBooleanState(false)
+    const [inputVal2, textSetter2] = useStringState()
+    const [showErr, showErrSetter] = useBooleanState(false)
     const validator = useValidation()
     // コールバックが10個以上とか多くなりすぎると微妙かもしれんが、コンポーネントの見通しが悪くなるより保守性はマシ
     // というかそれは1つのhookがでかすぎる疑惑なので処理を分割したほうが見通しよくテスタブルかも
-    const handleKeyPress = useOnKeyPressValidInput(inputVal2, validator, setTrue, setFalse)
+    const handleKeyPress = useOnKeyPressValidInput(inputVal2, validator, showErrSetter.on, showErrSetter.off)
 
     return (
         <div>
@@ -29,13 +29,18 @@ const Forms = () => {
                     label="input"
                     value={inputVal}
                     placeholder={'入力してね'}
-                    onChange={update}
+                    onChange={textSetter.update}
                 />
-                <Button onClick={reset}>リセット</Button>
-                <Button onClick={toggle}>不活性化</Button>
+                <Button onClick={textSetter.reset}>リセット</Button>
+                <Button onClick={setter.toggle}>不活性化</Button>
             </div>
             <div>
-                <TextField label="入力チェック" value={inputVal2} onChange={update2} onKeyPress={handleKeyPress} />
+                <TextField
+                    label="入力チェック"
+                    value={inputVal2}
+                    onChange={textSetter2.update}
+                    onKeyPress={handleKeyPress}
+                />
                 {showErr && <p>入力チェックエラー</p>}
             </div>
         </div>

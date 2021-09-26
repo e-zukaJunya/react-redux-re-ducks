@@ -5,7 +5,7 @@ import reportWebVitals from 'reportWebVitals'
 import { Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { history, store } from 'store/configureStore'
-import { AWS_CONFIG, env } from 'setttings/settings'
+import { AWS_CONFIG, ENV } from 'setttings/settings'
 // import {Amplify} from 'aws-amplify'
 import { ConnectedRouter } from 'connected-react-router'
 
@@ -25,4 +25,4 @@ ReactDOM.render(
 )
 
 // Web vitalの表示
-env.DEBUG && reportWebVitals(console.log)
+ENV.DEBUG && reportWebVitals(console.log)

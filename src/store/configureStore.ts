@@ -4,7 +4,7 @@ import pagesReducer from 'modules/pages/reducers'
 import { createLogger } from 'redux-logger'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
-import { env } from 'setttings/settings'
+import { ENV } from 'setttings/settings'
 
 //historyを作成
 export const history = createBrowserHistory()
@@ -25,7 +25,7 @@ const logger = createLogger({
     // 情報は閉じて置く
     collapsed: true,
     // loggerを効かせるかどうか(本番環境では非適用)
-    predicate: () => env.DEBUG,
+    predicate: () => ENV.DEBUG,
     // 何が変わったか
     diff: true,
 })

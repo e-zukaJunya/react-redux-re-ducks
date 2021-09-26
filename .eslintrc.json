@@ -1,24 +1,29 @@
 {
-  "extends": [
-    // ESLint推奨設定のチェック
-    "eslint:recommended",
-    // 型を必要としないプラグインの推奨ルールの有効化
-    "plugin:@typescript-eslint/recommended",
-    // prettier の条件を設定？
-    "prettier"
-  ],
-  // 使用するプラグイン？
-  "plugins": ["@typescript-eslint"],
-  // 不明
-  "env": {
-    "browser": true,
-    "node": true,
-    "es6": true
-  },
-  // TypeScriptのパーサー
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "sourceType": "module",
-    "project": "./tsconfig.json"
-  }
+    "extends": [
+        // ESLint推奨設定のチェック
+        "eslint:recommended",
+        // 型を必要としないプラグインの推奨ルールの有効化
+        "plugin:@typescript-eslint/recommended",
+        // prettier の条件を設定？
+        "prettier"
+    ],
+    // 使用するプラグイン？
+    "plugins": ["@typescript-eslint"],
+    // 不明
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+    },
+    // TypeScriptのパーサー
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "rules": {
+        // 関数やクラスの返却型を記載しないことに関する警告
+        // returnの値から勝手に予測してくれればいいのでoff
+        "@typescript-eslint/explicit-module-boundary-types": "off"
+    }
 }

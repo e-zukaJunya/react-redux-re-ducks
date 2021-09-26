@@ -4,9 +4,10 @@ import styles from 'styles/header/header.module.scss'
 import logo from 'resources/images/logo.png'
 import { pagePath } from 'constants/paths'
 import { headerLabels } from 'constants/labels'
-import { useNavigator, usePathName } from 'hooks/common/commonHooks'
 import HeaderTabs from 'components/parts/HeaderTabs'
 import AccountButton from 'components/parts/AccountButton'
+import { usePathName } from 'hooks/common/pathHooks'
+import { useNavigator } from 'hooks/common/routingHooks'
 
 //アプリの共通ヘッダー
 const Header: React.FC = () => {

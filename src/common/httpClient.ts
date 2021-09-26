@@ -1,9 +1,9 @@
 import axios, { AxiosError, AxiosResponse } from 'axios'
-import { env } from 'setttings/settings'
+import { ENV } from 'setttings/settings'
 
 // 共通設定
 export const axiosInstance = axios.create({
-    baseURL: env.API_URL,
+    baseURL: ENV.API_URL,
     withCredentials: true,
 })
 // リクエスト前処理
