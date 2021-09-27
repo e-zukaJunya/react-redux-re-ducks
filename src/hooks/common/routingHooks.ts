@@ -7,7 +7,9 @@ import { useLocation } from 'react-router-dom'
 import { SKIP_LOGIN } from 'setttings/settings'
 
 /**
- * ページ遷移
+ * ページ遷移用関数を返す
+ * @param replaceRoute 履歴に残さない遷移をさせるか
+ * @returns ページ遷移用関数
  */
 export const useNavigator = (replaceRoute = false) => {
     const dispatch = useDispatch()
@@ -40,7 +42,10 @@ export const useNavigateToLogin = () => {
 }
 // #endregion
 
-// 認証済みページマウント時の処理
+/**
+ * 認証済みページマウント時の処理
+ * @returns 認証状態
+ */
 export const usePrivateRouting = () => {
     // 認証状態の取得
     // ログイン不要設定なら状態を問わずtrue
@@ -56,7 +61,10 @@ export const usePrivateRouting = () => {
     return hasAuthenticated
 }
 
-// 未認証ページマウント時の処理
+/**
+ * 未認証ページマウント時の処理
+ * @returns 認証状態
+ */
 export const useGuestRouting = () => {
     // 認証状態の取得
     // ログイン不要設定なら状態を問わずfalse
