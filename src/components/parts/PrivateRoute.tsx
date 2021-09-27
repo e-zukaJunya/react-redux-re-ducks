@@ -6,9 +6,6 @@ import { Redirect, Route, RouteProps } from 'react-router-dom'
 
 // 認証済みユーザーのみ訪れるページ
 const PrivateRoute = (props: RouteProps) => {
-    console.log('render PrivateRoute')
-    
-    // const hasAuthenticated = useMemo(() => useSelector(hasAuthenticatedSelector), [])
     const hasAuthenticated = useSelector(hasAuthenticatedSelector)
     // 認証済みならトップページへリダイレクト
     return hasAuthenticated ? <Route {...props} /> : <Redirect to={pagePath.ROOT} />

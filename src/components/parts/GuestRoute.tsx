@@ -6,9 +6,6 @@ import { Redirect, Route, RouteProps } from 'react-router-dom'
 
 // 未認証ユーザーのみ訪れるページ
 const GuestRoute = (props: RouteProps) => {
-    console.log('render GuestRoute')
-
-    // const hasAuthenticated = useMemo(() => useSelector(hasAuthenticatedSelector), [])
     const hasAuthenticated = useSelector(hasAuthenticatedSelector)
     // 未認証ならログインへリダイレクト
     return hasAuthenticated ? <Route {...props} /> : <Redirect to={pagePath.LOGIN} />
