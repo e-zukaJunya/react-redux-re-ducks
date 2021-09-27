@@ -22,7 +22,7 @@ export const useNavigator = (replaceRoute = false) => {
                 dispatch(replaceRoute ? replace(to) : push(to))
             }
         },
-        [location]
+        [location, replaceRoute]
     )
 }
 
@@ -76,6 +76,6 @@ export const useGuestRouting = () => {
         // 認証済みならトップページへリダイレクト
         hasAuthenticated && navigator(pagePath.ROOT)
     }, [hasAuthenticated])
-    
+
     return hasAuthenticated
 }
