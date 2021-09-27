@@ -1,7 +1,7 @@
 import { push, replace } from 'connected-react-router'
 import { pagePath } from 'constants/paths'
 import { hasAuthenticatedSelector } from 'modules/users/selectors'
-import { useCallback, useEffect, useMemo } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import { SKIP_LOGIN } from 'setttings/settings'
@@ -24,6 +24,7 @@ export const useNavigator = (replaceRoute = false) => {
     )
 }
 
+// #region 各ページへのルーティング
 export const useNavigateToTop = () => {
     const navigator = useNavigator()
     return useCallback(() => {
@@ -37,23 +38,9 @@ export const useNavigateToLogin = () => {
         navigator(pagePath.LOGIN)
     }, [])
 }
-
-// #region 履歴に残さない遷移をしたい
-export const useReplaceToTop = () => {
-    const navigator = useNavigator(true)
-    return useCallback(() => {
-        navigator(pagePath.ROOT)
-    }, [])
-}
-
-export const useReplaceToLogin = () => {
-    const navigator = useNavigator(true)
-    return useCallback(() => {
-        navigator(pagePath.LOGIN)
-    }, [])
-}
 // #endregion
 
+// 認証済みページマウント時の処理
 export const usePrivateRouting = () => {
     // 認証状態の取得
     // ログイン不要設定なら状態を問わずtrue
@@ -69,6 +56,7 @@ export const usePrivateRouting = () => {
     return hasAuthenticated
 }
 
+// 未認証ページマウント時の処理
 export const useGuestRouting = () => {
     // 認証状態の取得
     // ログイン不要設定なら状態を問わずfalse
