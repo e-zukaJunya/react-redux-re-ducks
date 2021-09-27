@@ -28,3 +28,10 @@ export const useNavigateToTop = () => {
         navigator(pagePath.ROOT)
     }, [])
 }
+
+export const useNavigateToLogin = () => {
+    return useCallback(() => {
+        const navigator = useNavigator()
+        navigator(pagePath.LOGIN)
+    }, [])
+}

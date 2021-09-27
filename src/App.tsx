@@ -53,6 +53,8 @@ const App: React.FC = () => {
                         <PrivateRoute exact path={pagePath.OTHER} key={pagePath.OTHER} component={Other} />
                         {/* 認証状態を問わず表示 */}
                         <Route exact path={pagePath.IGNORE_ATUH} key={pagePath.IGNORE_ATUH} component={IgnoreAuth} />
+                        {/* 存在しないパスの時はログインへ */}
+                        <GuestRoute component={Login} />
                     </Switch>
                     <AppFooter />
 

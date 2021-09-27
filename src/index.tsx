@@ -1,13 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
 import App from 'App'
-import reportWebVitals from 'reportWebVitals'
-import { Route } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import { history, store } from 'store/configureStore'
-import { AWS_CONFIG, ENV } from 'setttings/settings'
 // import {Amplify} from 'aws-amplify'
 import { ConnectedRouter } from 'connected-react-router'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { Route } from 'react-router-dom'
+import reportWebVitals from 'reportWebVitals'
+import 'ress'
+import { ENV } from 'setttings/settings'
+import { history, store } from 'store/configureStore'
 
 // Amplifyの設定適用
 // Amplify.configure(AWS_CONFIG)
