@@ -65,6 +65,8 @@ export const usePrivateRouting = () => {
         //未認証ならログインページへリダイレクト
         !hasAuthenticated && navigator(pagePath.LOGIN)
     }, [hasAuthenticated])
+
+    return hasAuthenticated
 }
 
 export const useGuestRouting = () => {
@@ -78,4 +80,6 @@ export const useGuestRouting = () => {
         // 認証済みならトップページへリダイレクト
         hasAuthenticated && navigator(pagePath.ROOT)
     }, [hasAuthenticated])
+    
+    return hasAuthenticated
 }
