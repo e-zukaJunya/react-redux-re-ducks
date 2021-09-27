@@ -24,6 +24,18 @@ const usersSlice = createSlice({
         disposeUsers: (state) => {
             state.users = []
         },
+        // 疑似的に認証状態を変更する
+        setPseudoAuth: (state, action: PayloadAction<boolean>) => {
+            if (action.payload) {
+                // 認証状態にする
+                state.id = 'id_001'
+                state.displayName = '私の名前'
+            } else {
+                // 認証状態を消す
+                state.id = ''
+                state.displayName = ''
+            }
+        },
     },
     // 外部で作成したAction（主に非同期Action）
     extraReducers: (builder) => {
@@ -45,4 +57,4 @@ const usersSlice = createSlice({
 })
 
 export default usersSlice.reducer
-export const { setUsers, disposeUsers } = usersSlice.actions
+export const { setUsers, disposeUsers, setPseudoAuth } = usersSlice.actions

@@ -22,7 +22,9 @@ export const useNavigator = () => {
     )
 }
 
-export const navigateToTop = useCallback(() => {
-    const navigator = useNavigator()
-    navigator(pagePath.ROOT)
-}, [])
+export const useNavigateToTop = () => {
+    return useCallback(() => {
+        const navigator = useNavigator()
+        navigator(pagePath.ROOT)
+    }, [])
+}

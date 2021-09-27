@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Menu, MenuItem } from '@material-ui/core'
 import { accountMenuLabels } from 'constants/labels'
-import { useNavigator } from 'hooks/common/commonHooks'
+import { useNavigator } from 'hooks/common/routingHooks'
 import { pagePath } from 'constants/paths'
 
 interface Props {

@@ -1,11 +1,11 @@
-//progress ringの背景部分
+//loaderの背景部分
 .modal {
     position: relative;
     z-index: 1000000;
 }
 
-//progress ring本体
-.progress {
+//loader本体
+.loader {
     //位置を真ん中に調整
     position: absolute;
     top: 0;

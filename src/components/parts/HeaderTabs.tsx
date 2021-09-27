@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styles from 'styles/header/headerTabs.module.scss'
-import { useNavigator } from 'hooks/common/commonHooks'
+import { useNavigator } from 'hooks/common/routingHooks'
 import { useLocation } from 'react-router-dom'
 import { Button } from '@material-ui/core'
 import { useTabList } from 'hooks/header/headerTabsHooks'

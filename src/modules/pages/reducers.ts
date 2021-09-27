@@ -2,6 +2,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import * as PayloadTypes from 'modules/pages/types'
 import { InitialState } from 'modules/pages/types'
 
+// Tips: Storeの作成単位はAPIエンドポイントのリソースと同様の単位がよさそう
+// 加えて、Webアプリとして必要な情報の単位を追加（このpagesやusersのような）
+
 const initialState: InitialState = {
     // プログレスリングの表示
     displayProgress: false,
@@ -28,8 +31,9 @@ const pageSlice = createSlice({
             state.noticeDialog.open = false
         },
         //プログレスコンポーネントを開閉する
-        toggleProgress: (state, action: PayloadAction<boolean>) => {
-            state.displayProgress = action.payload
+        toggleProgress: (state, action?: PayloadAction<boolean>) => {
+            // 開閉状態の指定がなければ前の状態と逆にする
+            state.displayProgress = action ? action.payload : !state.displayProgress
         },
     },
 })

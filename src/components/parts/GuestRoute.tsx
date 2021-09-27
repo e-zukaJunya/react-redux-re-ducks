@@ -11,7 +11,7 @@ const GuestRoute = (props: RouteProps) => {
     // const hasAuthenticated = useMemo(() => useSelector(hasAuthenticatedSelector), [])
     const hasAuthenticated = useSelector(hasAuthenticatedSelector)
     // 未認証ならログインへリダイレクト
-    return hasAuthenticated ? <Redirect to={pagePath.LOGIN} /> : <Route {...props} />
+    return hasAuthenticated ? <Route {...props} /> : <Redirect to={pagePath.LOGIN} />
 }
 
 export default React.memo(GuestRoute)

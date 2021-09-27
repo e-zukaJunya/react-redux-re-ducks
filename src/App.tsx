@@ -11,8 +11,8 @@ import CommonDialog from 'components/parts/CommonDialog'
 import AppFooter from 'components/parts/Footer'
 import GuestRoute from 'components/parts/GuestRoute'
 import AppHeader from 'components/parts/Header'
+import Loader from 'components/parts/Loader'
 import PrivateRoute from 'components/parts/PrivateRoute'
-import Progress from 'components/parts/Progress'
 import { pagePath } from 'constants/paths'
 import { closeNoticeDialog } from 'modules/pages/reducers'
 import { noticeDialogSelector } from 'modules/pages/selectors'
@@ -56,8 +56,8 @@ const App: React.FC = () => {
                     </Switch>
                     <AppFooter />
 
-                    {/*Progress ring*/}
-                    <Progress />
+                    {/*Loader*/}
+                    <Loader />
 
                     {/*表示するだけの通知ポップアップ*/}
                     <CommonDialog

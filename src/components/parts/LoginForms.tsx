@@ -3,7 +3,7 @@ import { Button, TextField } from '@material-ui/core'
 import ExitToApp from '@material-ui/icons/ExitToApp'
 import styles from 'styles/login/loginForms.module.scss'
 import { loginLabels } from 'constants/labels'
-import { useNavigator } from 'hooks/common/commonHooks'
+import { useNavigator } from 'hooks/common/routingHooks'
 import { pagePath } from 'constants/paths'
 import { NormalTextField } from 'components/parts/NormalTextField'
 
@@ -15,7 +15,7 @@ const LoginForms: React.FC = () => {
     return (
         <div>
             <div className={styles.inputArea}>
-                <NormalTextField />
+                {/* <NormalTextField /> */}
                 <TextField
                     // 枠で囲まれたタイプ
                     variant="outlined"
