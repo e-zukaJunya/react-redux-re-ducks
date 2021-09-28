@@ -4,6 +4,7 @@ import { useToggle } from 'react-use'
 /**
  * booleanの値をlocal stateとして扱うとき用
  * @param init 初期値
+ * @returns 状態と管理メソッド
  */
 export const useBooleanState = (init: boolean) => {
     const [state, toggle] = useToggle(init)
@@ -22,6 +23,7 @@ export const useBooleanState = (init: boolean) => {
 /**
  * inputのtextやtextareaの値を扱うとき用
  * @param init 初期値
+ * @returns 状態と管理メソッド
  */
 export const useStringState = (
     init = ''
@@ -43,4 +45,17 @@ export const useStringState = (
     }, [])
 
     return [state, { update, reset }]
+}
+
+/**
+ * クリックした要素のアンカーをコントロールする
+ * @returns 状態と管理メソッド
+ */
+export const useAnchor = () => {
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+    // アンカーのセット
+    const set = useCallback((e: React.MouseEvent<HTMLElement, MouseEvent>) => setAnchorEl(e.currentTarget), [])
+    // アンカーのリリース
+    const release = useCallback(() => setAnchorEl(null), [])
+    return [anchorEl, { set, release }] as const
 }

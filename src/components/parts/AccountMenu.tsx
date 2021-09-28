@@ -8,7 +8,7 @@ interface Props {
     // メニュー出現位置の座標となるHTML要素
     anchorEl: null | HTMLElement
     // 閉じる時の挙動
-    doClose: () => void
+    onClose: () => void
 }
 
 //アカウントメニュー
@@ -17,7 +17,7 @@ const AccountMenu: React.FC<Props> = (props) => {
     return (
         <Menu
             open={Boolean(props.anchorEl)}
-            onClose={props.doClose}
+            onClose={props.onClose}
             anchorEl={props.anchorEl}
             // 出現と変形の位置調整
             getContentAnchorEl={null}
@@ -31,7 +31,7 @@ const AccountMenu: React.FC<Props> = (props) => {
             }}
         >
             <MenuItem onClick={() => navigator(pagePath.LOGIN)}>{accountMenuLabels.LOGOUT}</MenuItem>
-            <MenuItem onClick={props.doClose}>{accountMenuLabels.CHANGE_PASSWORD}</MenuItem>
+            <MenuItem onClick={props.onClose}>{accountMenuLabels.CHANGE_PASSWORD}</MenuItem>
         </Menu>
     )
 }

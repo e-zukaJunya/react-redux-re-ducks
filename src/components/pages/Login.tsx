@@ -10,9 +10,12 @@ import { usePseudoLogin } from 'hooks/login/loginHooks'
 const Login: React.FC = () => {
     // ログイン状態のトグルアクション
     const handler = usePseudoLogin()
+
     return (
         <div className={styles.container}>
+            {/* タイトル */}
             <h1 className={styles.pageTitle}>{loginLabels.TITLE}</h1>
+            
             {/*フォーム部分*/}
             <LoginForms />
             {/*パスワードリセット案内*/}

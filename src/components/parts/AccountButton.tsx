@@ -1,20 +1,20 @@
-import * as React from 'react'
-import { useCallback } from 'react'
-import styles from 'styles/header/accountButton.module.scss'
 import { IconButton } from '@material-ui/core'
 import { AccountCircle } from '@material-ui/icons'
 import AccountMenu from 'components/parts/AccountMenu'
+import { useAnchor } from 'hooks/common/commonHooks'
+import * as React from 'react'
+import styles from 'styles/header/accountButton.module.scss'
 
 //ヘッダーのタブ全体
 const AccountButton: React.FC = () => {
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
-    const handleClick = useCallback((event) => setAnchorEl(event.currentTarget), [])
+    // メニュー出現位置をコントロールするアンカー
+    const [anchorEl, anchorSetter] = useAnchor()
     return (
         <div>
-            <IconButton className={styles.iconButton} onClick={handleClick}>
+            <IconButton className={styles.iconButton} onClick={anchorSetter.set}>
                 <AccountCircle />
             </IconButton>
-            <AccountMenu anchorEl={anchorEl} doClose={() => setAnchorEl(null)} />
+            <AccountMenu anchorEl={anchorEl} onClose={anchorSetter.release} />
         </div>
     )
 }

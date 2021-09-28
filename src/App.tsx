@@ -22,21 +22,12 @@ import { Route, Switch } from 'react-router-dom'
 import { AppDispatch } from 'store/configureStore'
 import styles from 'styles/common/app.module.scss'
 
-// export const getId = async () => await Auth.currentAuthenticatedUser();
-
 // アプリの中で最上位の配置を担う
 // ページルーティングの設定もここで
 const App: React.FC = () => {
-    const dialogState = useSelector(noticeDialogSelector)
     const dispatch: AppDispatch = useDispatch()
-    // todo storeへ
-    // const history = useHistory();
-    // const location = useLocation();
-    // const res = useSelector((state: RootState) => ({
-    //     loginDate: state.common.loginDate,
-    //     isLoading: state.common.isLoading
-    // }), shallowEqual);
-    // const isLoading = res.isLoading;
+    const dialogState = useSelector(noticeDialogSelector)
+    
     return (
         <StylesProvider injectFirst>
             {/*Material UIのDatePickerをLuxonで使用したいためこれで囲う*/}
