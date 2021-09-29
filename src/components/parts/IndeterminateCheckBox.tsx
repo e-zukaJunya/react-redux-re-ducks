@@ -2,6 +2,8 @@ import { Box, Checkbox, FormControlLabel } from '@material-ui/core'
 import * as React from 'react'
 
 interface Props {
+    // 親のラベル
+    parentLabel: string
     // 選択肢
     values: string[]
 }
@@ -40,7 +42,7 @@ const IndeterminateCheckbox: React.FC<Props> = (props) => {
     return (
         <div>
             <FormControlLabel
-                label="Parent"
+                label={props.parentLabel}
                 control={<Checkbox checked={on} indeterminate={indeterminate} onChange={handleParent} />}
             />
             {childrenBoxes}

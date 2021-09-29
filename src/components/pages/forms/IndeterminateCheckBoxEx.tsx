@@ -5,7 +5,7 @@ import * as React from 'react'
 const children = ['child1', 'child2', 'child3', 'child4']
 
 const IndeterminateCheckBoxEx = () => {
-    return <IndeterminateCheckBox values={children} />
+    return <IndeterminateCheckBox values={children} parentLabel={'parent'} />
 }
 
 export default React.memo(IndeterminateCheckBoxEx)

@@ -1,10 +1,9 @@
+import { Button } from '@material-ui/core'
+import { usePathNameList } from 'hooks/common/pathHooks'
+import { useNavigator } from 'hooks/common/routingHooks'
+import { useTabList } from 'hooks/header/headerTabsHooks'
 import * as React from 'react'
 import styles from 'styles/header/headerTabs.module.scss'
-import { useNavigator } from 'hooks/common/routingHooks'
-import { useLocation } from 'react-router-dom'
-import { Button } from '@material-ui/core'
-import { useTabList } from 'hooks/header/headerTabsHooks'
-import { usePathNameList } from 'hooks/common/pathHooks'
 
 interface TabProps {
     // 表示する文字
