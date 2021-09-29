@@ -27,7 +27,7 @@ import styles from 'styles/common/app.module.scss'
 const App: React.FC = () => {
     const dispatch: AppDispatch = useDispatch()
     const dialogState = useSelector(noticeDialogSelector)
-    
+
     return (
         <StylesProvider injectFirst>
             {/*Material UIのDatePickerをLuxonで使用したいためこれで囲う*/}
@@ -39,7 +39,8 @@ const App: React.FC = () => {
                         <GuestRoute exact path={pagePath.LOGIN} key={pagePath.LOGIN} component={Login} />
                         {/* 認証済みの時のみ表示 */}
                         <PrivateRoute exact path={pagePath.ROOT} key={pagePath.ROOT} component={Sample} />
-                        <PrivateRoute exact path={pagePath.PAGE2} key={pagePath.PAGE2} component={Forms} />
+                        {/* 子でさらにページをレンダリングするならexactにしない */}
+                        <PrivateRoute path={pagePath.FORMS} key={pagePath.FORMS} component={Forms} />
                         <PrivateRoute exact path={pagePath.PAGE3} key={pagePath.PAGE3} component={List} />
                         <PrivateRoute exact path={pagePath.OTHER} key={pagePath.OTHER} component={Other} />
                         {/* 認証状態を問わず表示 */}

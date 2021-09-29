@@ -7,7 +7,7 @@ import { pagePath } from 'constants/paths'
 export const useTabList = () => {
     return [
         { label: headerLabels.ROOT, path: pagePath.ROOT },
-        { label: headerLabels.PAGE2, path: pagePath.PAGE2 },
+        { label: headerLabels.PAGE2, path: pagePath.FORMS },
         { label: headerLabels.PAGE3, path: pagePath.PAGE3 },
         { label: headerLabels.OTHER, path: pagePath.OTHER },
     ]

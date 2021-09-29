@@ -1,5 +1,21 @@
-import React, { useCallback } from 'react'
 import { CharType } from 'constants/enums'
+import React, { useCallback, useState } from 'react'
+
+/**
+ * タブの状態管理
+ * @param init 初期値
+ * @returns 状態と管理メソッド
+ */
+export const useTab = (init: number) => {
+    const [value, setValue] = useState(init)
+
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    const handleChange = useCallback((event: React.ChangeEvent<{}>, newValue: number) => {
+        setValue(newValue)
+    }, [])
+
+    return [value, handleChange] as const
+}
 
 /**
  * フォームのエンター押したときのコールバックを返す

@@ -3,6 +3,8 @@ import { Menu, MenuItem } from '@material-ui/core'
 import { accountMenuLabels } from 'constants/labels'
 import { useNavigator } from 'hooks/common/routingHooks'
 import { pagePath } from 'constants/paths'
+import { AppDispatch } from 'store/configureStore'
+import { useDispatch } from 'react-redux'
 
 interface Props {
     // メニュー出現位置の座標となるHTML要素
@@ -13,13 +15,17 @@ interface Props {
 
 //アカウントメニュー
 const AccountMenu: React.FC<Props> = (props) => {
+    const dispatch: AppDispatch = useDispatch()
     const navigator = useNavigator()
     return (
         <Menu
+            // 開閉状態
             open={Boolean(props.anchorEl)}
+            // メニュー外クリック時の挙動
             onClose={props.onClose}
+            // 出現位置のアンカー
             anchorEl={props.anchorEl}
-            // 出現と変形の位置調整
+            // #region 出現と変形の位置調整
             getContentAnchorEl={null}
             anchorOrigin={{
                 vertical: 'center',
@@ -29,8 +35,11 @@ const AccountMenu: React.FC<Props> = (props) => {
                 vertical: 'top',
                 horizontal: 'right',
             }}
+            // #endregion
         >
+            {/* ログアウト */}
             <MenuItem onClick={() => navigator(pagePath.LOGIN)}>{accountMenuLabels.LOGOUT}</MenuItem>
+            {/* パスワード変更 */}
             <MenuItem onClick={props.onClose}>{accountMenuLabels.CHANGE_PASSWORD}</MenuItem>
         </Menu>
     )

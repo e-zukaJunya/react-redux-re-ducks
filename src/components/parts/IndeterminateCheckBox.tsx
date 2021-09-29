@@ -1,12 +1,13 @@
 import { Box, Checkbox, FormControlLabel } from '@material-ui/core'
 import * as React from 'react'
 
-// 選択肢
-const children = ['child1', 'child2', 'child3', 'child4']
-
+interface Props {
+    // 選択肢
+    values: string[]
+}
 // エクセルのフィルター的な選択ができるチェックボックス
-const IndeterminateCheckbox = () => {
-    const [checked, setChecked] = React.useState(children.map(() => false))
+const IndeterminateCheckbox: React.FC<Props> = (props) => {
+    const [checked, setChecked] = React.useState(props.values.map(() => false))
 
     // 親のチェックボックス更新処理
     const handleParent = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,14 +16,15 @@ const IndeterminateCheckbox = () => {
 
     // 子のチェックボックス更新処理
     const handleChild = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const index = children.indexOf(event.target.name)
+        const index = props.values.indexOf(event.target.name)
         setChecked(checked.map((checked, i) => (i === index ? !checked : checked)))
     }
 
     const childrenBoxes = (
         <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
-            {children.map((value, i) => (
+            {props.values.map((value, i) => (
                 <FormControlLabel
+                    style={{ width: '100px' }}
                     key={i}
                     label={value}
                     control={<Checkbox name={value} checked={checked[i]} onChange={handleChild} />}

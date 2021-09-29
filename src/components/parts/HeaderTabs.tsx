@@ -4,6 +4,7 @@ import { useNavigator } from 'hooks/common/routingHooks'
 import { useLocation } from 'react-router-dom'
 import { Button } from '@material-ui/core'
 import { useTabList } from 'hooks/header/headerTabsHooks'
+import { usePathNameList } from 'hooks/common/pathHooks'
 
 interface TabProps {
     // 表示する文字
@@ -15,12 +16,12 @@ interface TabProps {
 //個々のタブ
 const Tab: React.FC<TabProps> = React.memo((props) => {
     const navigator = useNavigator()
-    const location = useLocation()
+    const paths = usePathNameList()
+    console.log(paths)
+    console.log(props.to)
+
     return (
-        <Button
-            className={location.pathname === props.to ? styles.selectedTab : styles.tab}
-            onClick={() => navigator(props.to)}
-        >
+        <Button className={paths[0] === props.to ? styles.selectedTab : styles.tab} onClick={() => navigator(props.to)}>
             {props.label}
         </Button>
     )

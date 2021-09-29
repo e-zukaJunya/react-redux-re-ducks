@@ -3,7 +3,11 @@
 export const pagePath = {
     ROOT: '/',
     LOGIN: '/login',
-    PAGE2: '/page2',
+    FORMS_CHECKBOX: '/forms/checkbox',
+    FORMS_RADIO: '/forms/radio',
+    FORMS_TEXT: '/forms/text',
+    FORMS_INDETERMINATE_CHECKBOX: '/forms/indeterminate-checkbox',
+    FORMS: '/forms',
     PAGE3: '/page3',
     OTHER: '/other',
     IGNORE_ATUH: '/ignore_auth',

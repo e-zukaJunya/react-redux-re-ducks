@@ -1,10 +1,10 @@
-import { useMemo } from "react"
-import { useLocation } from "react-router-dom"
+import { useMemo } from 'react'
+import { useLocation } from 'react-router-dom'
 
 /**
  * pathnameの取得
  */
- export const usePathName = (): string => {
+export const usePathName = (): string => {
     const location = useLocation()
     return useMemo(() => location.pathname, [location.pathname])
 }

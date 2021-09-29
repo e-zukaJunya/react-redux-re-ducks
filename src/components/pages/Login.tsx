@@ -15,7 +15,7 @@ const Login: React.FC = () => {
         <div className={styles.container}>
             {/* タイトル */}
             <h1 className={styles.pageTitle}>{loginLabels.TITLE}</h1>
-            
+
             {/*フォーム部分*/}
             <LoginForms />
             {/*パスワードリセット案内*/}

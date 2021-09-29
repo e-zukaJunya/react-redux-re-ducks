@@ -49,3 +49,8 @@ code {
         flex-grow: 1;
     }
 }
+
+footer {
+    //フッターの色の値は共通で管理する必要はないかな
+    background-color: lightgrey;
+}

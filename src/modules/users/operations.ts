@@ -4,6 +4,7 @@ import { axiosInstance } from 'common/httpClient'
 import { apiPath } from 'constants/paths'
 import { requestAuthPasswordChange } from 'modules/users/types'
 import { toggleProgress } from 'modules/pages/reducers'
+import { setPseudoAuth } from 'modules/users/reducers'
 
 interface hogeRes {
     id: number
@@ -96,3 +97,8 @@ export const postChangePassword = createAsyncThunk(
         request.dispatch(toggleProgress(false))
     }
 )
+// <number, string, { state: RootState }>
+export const postLogout = createAsyncThunk<void, { state: RootState }>('user/logout', async (thunkApi) => {
+    //プログレスを表示
+    // thunkApi.dispatch(setPseudoAuth(false))
+})

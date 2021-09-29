@@ -27,7 +27,7 @@ const Sample: React.FC = () => {
 
             {/*ページ遷移リンクの例*/}
             <div>
-                <Link to={pagePath.PAGE2}>{'ページ2へ'}</Link>
+                <Link to={pagePath.FORMS}>{'Formのページへ'}</Link>
             </div>
         </div>
     )

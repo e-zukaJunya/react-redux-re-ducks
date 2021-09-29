@@ -33,3 +33,11 @@ export const dialogButton = {
     OK: 'OK',
     BACK: '戻る',
 }
+
+// フォームのページのタブ
+export const formPageTabs = {
+    CHECKBOX: 'チェックボックス',
+    RADIO: 'ラジオボタン',
+    TEXT: 'テキストボックス',
+    INDETERMINATE_CHECKBOX: '不定チェックボックス',
+}
