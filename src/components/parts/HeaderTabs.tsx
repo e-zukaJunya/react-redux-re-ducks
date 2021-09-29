@@ -17,11 +17,11 @@ interface TabProps {
 const Tab: React.FC<TabProps> = React.memo((props) => {
     const navigator = useNavigator()
     const paths = usePathNameList()
-    console.log(paths)
-    console.log(props.to)
+    // タブのパスのルート
+    const rootPath = props.to.split('/')[1]
 
     return (
-        <Button className={paths[0] === props.to ? styles.selectedTab : styles.tab} onClick={() => navigator(props.to)}>
+        <Button className={paths[0] === rootPath ? styles.selectedTab : styles.tab} onClick={() => navigator(props.to)}>
             {props.label}
         </Button>
     )
