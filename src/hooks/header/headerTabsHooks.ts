@@ -10,7 +10,10 @@ export const useTabList = () => {
         { label: headerLabels.ROOT, path: pagePath.ROOT },
         { label: headerLabels.PAGE2, path: pagePath.FORMS_CHECKBOX },
         { label: headerLabels.PAGE3, path: pagePath.PAGE3 },
+        { label: headerLabels.TABLE, path: pagePath.TABLE },
+        { label: headerLabels.ASYNC, path: pagePath.ASYNC },
         { label: headerLabels.OTHER, path: pagePath.OTHER },
+        { label: headerLabels.IGNORE_ATUH, path: pagePath.IGNORE_ATUH },
     ]
 }
 

@@ -18,7 +18,10 @@ export const headerLabels = {
     ROOT: 'トップ',
     PAGE2: 'フォーム',
     PAGE3: 'リスト',
+    TABLE: 'テーブル',
+    ASYNC: '非同期処理',
     OTHER: 'その他',
+    IGNORE_ATUH: '認証不要',
 }
 
 //ヘッダー
