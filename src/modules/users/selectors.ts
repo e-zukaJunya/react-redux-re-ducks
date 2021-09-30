@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect'
-import { SKIP_LOGIN } from 'setttings/settings'
 import { RootState } from 'store/configureStore'
 
 // 単純に1つのstateから値を取得する場合はこれだけ定義してコンポーネント側でこれを呼べばいい

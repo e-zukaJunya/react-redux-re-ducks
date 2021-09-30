@@ -9,21 +9,28 @@ const Sample: React.FC = () => {
 
     return (
         <div>
-            {/*メッセージ表示の例*/}
-            <h1>Root</h1>
-            <p>{messages.COMMON_ERROR()}</p>
-            <p>{messages.HOGE(words.MANA)}</p>
+            <div>
+                {/*メッセージ表示の例*/}
+                <h1>Root</h1>
+                <p>{messages.COMMON_ERROR()}</p>
+                <p>{messages.HOGE(words.MANA)}</p>
+            </div>
+            <br />
 
-            {/*ローカルステートの例*/}
-            <div>{state.toString()}</div>
-            {/*コールバックはなるべくuseCallbackで作成したものを割り当てるがよし*/}
-            {/*これはローカルステートの動きを示すことを目的としたので面倒でそうしてない*/}
-            <button type={'button'} onClick={() => setState(true)}>
-                true
-            </button>
-            <button type={'button'} onClick={() => setState(false)}>
-                false
-            </button>
+            <div>
+                {/*ローカルステートの例*/}
+                <div>{state.toString()}</div>
+                {/*コールバックはなるべくuseCallbackで作成したものを割り当てるがよし*/}
+                {/*これはローカルステートの動きを示すことを目的としたので面倒でそうしてない*/}
+                <button type={'button'} onClick={() => setState(true)}>
+                    true
+                </button>
+                <button type={'button'} onClick={() => setState(false)}>
+                    false
+                </button>
+            </div>
+
+            <br />
 
             {/*ページ遷移リンクの例*/}
             <div>

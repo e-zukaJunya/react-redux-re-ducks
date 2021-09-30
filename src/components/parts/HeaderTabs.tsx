@@ -1,7 +1,6 @@
 import { Button } from '@material-ui/core'
-import { usePathNameList } from 'hooks/common/pathHooks'
 import { useNavigator } from 'hooks/common/routingHooks'
-import { useTabList } from 'hooks/header/headerTabsHooks'
+import { useCurrentLocation, useTabList } from 'hooks/header/headerTabsHooks'
 import * as React from 'react'
 import styles from 'styles/header/headerTabs.module.scss'
 
@@ -15,12 +14,11 @@ interface TabProps {
 //個々のタブ
 const Tab: React.FC<TabProps> = React.memo((props) => {
     const navigator = useNavigator()
-    const paths = usePathNameList()
-    // タブのパスのルート
-    const rootPath = props.to.split('/')[1]
+    // 今いるタブかどうか
+    const isCurrLocatoin = useCurrentLocation(props.to)
 
     return (
-        <Button className={paths[0] === rootPath ? styles.selectedTab : styles.tab} onClick={() => navigator(props.to)}>
+        <Button className={isCurrLocatoin ? styles.selectedTab : styles.tab} onClick={() => navigator(props.to)}>
             {props.label}
         </Button>
     )
