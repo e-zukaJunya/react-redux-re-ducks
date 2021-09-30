@@ -8,7 +8,7 @@ import { usePathNameList } from 'hooks/common/pathHooks'
 export const useTabList = () => {
     return [
         { label: headerLabels.ROOT, path: pagePath.ROOT },
-        { label: headerLabels.PAGE2, path: pagePath.FORMS },
+        { label: headerLabels.PAGE2, path: pagePath.FORMS_CHECKBOX },
         { label: headerLabels.PAGE3, path: pagePath.PAGE3 },
         { label: headerLabels.OTHER, path: pagePath.OTHER },
     ]
