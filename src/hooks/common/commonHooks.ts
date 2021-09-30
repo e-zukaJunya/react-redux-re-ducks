@@ -21,6 +21,17 @@ export const useBooleanState = (init: boolean) => {
 }
 
 /**
+ * チェックボックスの状態管理
+ * @param init 初期値
+ * @returns 状態と管理メソッド
+ */
+export const useCheckbox = (init: boolean) => {
+    const [state, toggle] = useToggle(init)
+    const setChecked = useCallback((_: React.ChangeEvent<HTMLInputElement>, checked: boolean) => toggle(checked), [])
+    return [state, setChecked] as const
+}
+
+/**
  * inputのtextやtextareaの値を扱うとき用
  * @param init 初期値
  * @returns 状態と管理メソッド

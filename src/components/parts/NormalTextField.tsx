@@ -1,6 +1,7 @@
 import { TextField, TextFieldProps } from '@material-ui/core'
+import React from 'react'
 
-export const NormalTextField: React.FC = (props: TextFieldProps) => (
+const NormalTextField = (props: TextFieldProps) => (
     <TextField
         // 枠で囲まれたタイプ
         variant="outlined"
@@ -9,3 +10,5 @@ export const NormalTextField: React.FC = (props: TextFieldProps) => (
         {...props}
     />
 )
+
+export default React.memo(NormalTextField)

@@ -50,6 +50,7 @@ export const apiGetRequest = async <T, U>(path: string, option: { header?: any; 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const apiPostRequest = async <T, U>(
     path: string,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     option: { header?: any; queryPram?: any; body?: any } = {}
 ) => {
     return await axiosInstance
@@ -83,6 +84,7 @@ export const apiPutRequest = async <T, U>(path: string, option: { header?: any; 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const apiDeleteRequest = async <T, U>(
     path: string,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     option: { header?: any; queryPram?: any } = {}
 ): Promise<AxiosResponse<T> | AxiosError<U>> => {
     return await axiosInstance

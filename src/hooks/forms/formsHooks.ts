@@ -27,8 +27,7 @@ export const useTab = (init: number) => {
 export const useOnKeyPressValidInput = (
     val: string,
     validator: (val: string, chartType: CharType, max: number, min: number) => boolean,
-    setTrue: () => void,
-    setFalse: () => void
+    toggle: (nextValue?: boolean) => void
 ) => {
     // これごとタグのonKeyPressに渡すための作り
     return useCallback(
@@ -37,16 +36,10 @@ export const useOnKeyPressValidInput = (
             if (e.key === 'Enter' && val.trim()) {
                 // 念のため
                 e.preventDefault()
-                const res = validator(val, CharType.HarfAlphaNumeric, 1, 5)
-                if (res) {
-                    // エラーメッセージ表示
-                    setFalse()
-                } else {
-                    // エラーメッセージ非表示
-                    setTrue()
-                }
+                const isValid = validator(val, CharType.HarfAlphaNumeric, 1, 5)
+                toggle(!isValid)
             }
         },
-        [val, setTrue, setFalse]
+        [val, toggle]
     )
 }

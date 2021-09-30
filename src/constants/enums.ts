@@ -5,7 +5,7 @@
 export const CharType = {
     // すべてOK
     All: 0,
-    // 半角英数
+    // 半角英数記号
     HarfAlphaNumeric: 1,
     // 半角英語
     HarfAlpha: 2,

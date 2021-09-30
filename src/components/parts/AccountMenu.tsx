@@ -1,10 +1,8 @@
-import * as React from 'react'
 import { Menu, MenuItem } from '@material-ui/core'
 import { accountMenuLabels } from 'constants/labels'
-import { useNavigator } from 'hooks/common/routingHooks'
 import { pagePath } from 'constants/paths'
-import { AppDispatch } from 'store/configureStore'
-import { useDispatch } from 'react-redux'
+import { useNavigator } from 'hooks/common/routingHooks'
+import * as React from 'react'
 
 interface Props {
     // メニュー出現位置の座標となるHTML要素
@@ -15,7 +13,6 @@ interface Props {
 
 //アカウントメニュー
 const AccountMenu: React.FC<Props> = (props) => {
-    const dispatch: AppDispatch = useDispatch()
     const navigator = useNavigator()
     return (
         <Menu

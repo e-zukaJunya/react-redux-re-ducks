@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
 import { Button, TextField } from '@material-ui/core'
 import ExitToApp from '@material-ui/icons/ExitToApp'
-import styles from 'styles/login/loginForms.module.scss'
 import { loginLabels } from 'constants/labels'
-import { useNavigator } from 'hooks/common/routingHooks'
 import { pagePath } from 'constants/paths'
-import { NormalTextField } from 'components/parts/NormalTextField'
+import { useNavigator } from 'hooks/common/routingHooks'
+import React, { useState } from 'react'
+import styles from 'styles/login/loginForms.module.scss'
 
 // ログイン画面
 const LoginForms: React.FC = () => {

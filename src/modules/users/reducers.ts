@@ -44,13 +44,19 @@ const usersSlice = createSlice({
             .addCase(testGet.pending, (state, action) => {
                 //非同期処理中のロジック
                 console.log('途中')
+                console.log(state)
+                console.log(action)
             })
             .addCase(testGet.fulfilled, (state, action) => {
                 console.log('成功')
+                console.log(state)
+                console.log(action)
                 //非同期処理成功時のロジック
             })
             .addCase(testGet.rejected, (state, action) => {
                 console.log('失敗')
+                console.log(state)
+                console.log(action)
                 //非同期処理失敗時のロジック
             })
     },
