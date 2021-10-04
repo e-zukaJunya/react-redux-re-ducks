@@ -1,7 +1,7 @@
 import { pagePath } from 'constants/paths'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { messages, words } from 'resources/messages'
+import { messages, words } from 'constants/messages'
 
 const Sample: React.FC = () => {
     // ローカルステートの例
