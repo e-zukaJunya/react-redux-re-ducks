@@ -6,14 +6,17 @@ import { useDispatch } from 'react-redux'
 const Async = () => {
     const dispatch = useDispatch()
     // 初期処理
-    const justAsync = async () => {
+    const justAsync = () => {
         dispatch(testAsync())
+    }
+    const fetchApi = () => {
         dispatch(testGet('test'))
     }
     return (
         <div>
             <h1>非同期処理</h1>
-            <Button onClick={justAsync}>非同期処理</Button>
+            <Button onClick={justAsync}>0.5秒待つだけ</Button>
+            <Button onClick={fetchApi}>API呼び出し</Button>
         </div>
     )
 }

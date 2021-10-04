@@ -43,19 +43,25 @@ const samplesSlice = createSlice({
                 //非同期処理中のロジック
                 console.log('途中')
                 console.log(state)
-                console.log(action)
+                console.log(action.type)
+                console.log(action.payload)
+                console.log(action.meta)
             })
             .addCase(testGet.fulfilled, (state, action) => {
                 //非同期処理成功時のロジック
                 console.log('成功')
                 console.log(state)
-                console.log(action)
+                console.log(action.type)
+                console.log(action.payload)
+                console.log(action.meta)
             })
             .addCase(testGet.rejected, (state, action) => {
                 //非同期処理失敗時のロジック
                 console.log('失敗')
                 console.log(state)
-                console.log(action)
+                console.log(action.type)
+                console.log(action.payload)
+                console.log(action.meta)
             })
     },
 })

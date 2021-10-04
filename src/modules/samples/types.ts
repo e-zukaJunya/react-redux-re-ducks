@@ -7,10 +7,7 @@ export interface Persons {
     name: string
 }
 
-/**
- * APIリクエスト: ログイン
- */
-export interface requestAuthLogin {
-    loginID: string
-    password: string
+export interface hogeRes {
+    id: number
+    name: string
 }

@@ -19,5 +19,4 @@ export const pagePath = {
 
 export const apiPath = {
     SAMPLE: '/sample',
-    TEST: '/test',
 }
