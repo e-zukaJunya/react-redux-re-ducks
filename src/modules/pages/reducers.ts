@@ -1,13 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import * as PayloadTypes from 'modules/pages/types'
-import { InitialState } from 'modules/pages/types'
+import { PageState } from 'modules/pages/types'
 
-// Tips: Storeの作成単位はAPIエンドポイントのリソースと同様の単位がよさそう
-// 加えて、Webアプリとして必要な情報の単位を追加（このpagesやusersのような）
-
-const initialState: InitialState = {
-    // プログレスリングの表示
-    displayProgress: false,
+const initialState: PageState = {
+    // loaderの表示
+    dispLoader: false,
     // API呼び出しなどの結果、表示する通知ダイアログ用
     noticeDialog: {
         open: false,
@@ -23,20 +20,20 @@ const pageSlice = createSlice({
     initialState,
     reducers: {
         //共通通知ダイアログを開く
-        setNoticeDialog: (state, action: PayloadAction<PayloadTypes.NoticeDialog>) => {
+        setNoticeDialog: (state, action: PayloadAction<PayloadTypes.Dialog>) => {
             state.noticeDialog = action.payload
         },
         //共通通知ダイアログを閉じる
         closeNoticeDialog: (state) => {
             state.noticeDialog.open = false
         },
-        //プログレスコンポーネントを開閉する
-        toggleProgress: (state, action?: PayloadAction<boolean>) => {
+        //loaderを開閉する
+        toggleLoader: (state, action?: PayloadAction<boolean>) => {
             // 開閉状態の指定がなければ前の状態と逆にする
-            state.displayProgress = action ? action.payload : !state.displayProgress
+            state.dispLoader = action ? action.payload : !state.dispLoader
         },
     },
 })
 
 export default pageSlice.reducer
-export const { setNoticeDialog, closeNoticeDialog, toggleProgress } = pageSlice.actions
+export const { setNoticeDialog, closeNoticeDialog, toggleLoader } = pageSlice.actions

@@ -1,4 +1,7 @@
+import { createSelector } from '@reduxjs/toolkit'
 import { RootState } from 'store/configureStore'
 
-export const noticeDialogSelector = (state: RootState) => state.pages.noticeDialog
-export const progressSelector = (state: RootState) => state.pages.displayProgress
+export const pageSelector = (state: RootState) => state.pages
+
+export const dialogSelector = createSelector([pageSelector], (page) => page.noticeDialog)
+export const loaderSelector = createSelector([pageSelector], (page) => page.dispLoader)

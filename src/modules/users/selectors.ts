@@ -1,12 +1,7 @@
-import { createSelector } from 'reselect'
+import { createSelector } from '@reduxjs/toolkit'
 import { RootState } from 'store/configureStore'
 
-// 単純に1つのstateから値を取得する場合はこれだけ定義してコンポーネント側でこれを呼べばいい
-const usersSelector = (state: RootState) => state.users.users
-export const usersSelector2 = (state: RootState) => state.users
+export const userSelector = (state: RootState) => state.users
 
 // 認証済みかどうかを取得する
-export const hasAuthenticatedSelector = (state: RootState) => state.users.id !== ''
-
-// 取得したstateをさらに加工する場合
-export const getUsers = createSelector([usersSelector], (users) => users.map((item) => item.name))
+export const hasAuthenticatedSelector = createSelector([userSelector], (user) => user.id !== '')

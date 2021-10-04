@@ -17,7 +17,7 @@ import Loader from 'components/parts/Loader'
 import PrivateRoute from 'components/parts/PrivateRoute'
 import { pagePath } from 'constants/paths'
 import { closeNoticeDialog } from 'modules/pages/reducers'
-import { noticeDialogSelector } from 'modules/pages/selectors'
+import { dialogSelector } from 'modules/pages/selectors'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
@@ -28,7 +28,7 @@ import styles from 'styles/common/app.module.scss'
 // ページルーティングの設定もここで
 const App: React.FC = () => {
     const dispatch: AppDispatch = useDispatch()
-    const dialogState = useSelector(noticeDialogSelector)
+    const dialogState = useSelector(dialogSelector)
 
     return (
         <StylesProvider injectFirst>

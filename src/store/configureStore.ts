@@ -1,9 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import usersReducer from 'modules/users/reducers'
-import pagesReducer from 'modules/pages/reducers'
-import { createLogger } from 'redux-logger'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
+import pagesReducer from 'modules/pages/reducers'
+import samplesReducer from 'modules/samples/reducers'
+import usersReducer from 'modules/users/reducers'
+import { createLogger } from 'redux-logger'
 import { ENV } from 'setttings/settings'
 
 //historyを作成
@@ -13,6 +14,7 @@ export const history = createBrowserHistory()
 export const rootReducer = combineReducers({
     users: usersReducer,
     pages: pagesReducer,
+    sample: samplesReducer,
     router: connectRouter(history),
 })
 

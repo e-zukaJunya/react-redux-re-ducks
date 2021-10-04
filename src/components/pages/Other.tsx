@@ -1,73 +1,28 @@
 import { Button } from '@material-ui/core'
 import CommonDialog from 'components/parts/CommonDialog'
 import { useBooleanState } from 'hooks/common/commonHooks'
-import { useProgress, useUsers } from 'hooks/other/otherHooks'
-import { getUsers } from 'modules/users/selectors'
+import { useLoader, usePersons } from 'hooks/other/otherHooks'
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 const Other = () => {
     const [confDialog, confDialogSetter] = useBooleanState(false)
     const [notifDialog, notifDialogSetter] = useBooleanState(false)
 
-    const users = useSelector(getUsers)
-    const usersParagraph = users.map((item: string, idx: number) => <p key={idx}>{item}</p>)
-    const [setUsers, disposeUsers] = useUsers()
-
-    //API呼び出しサンプル
-    // const apiTest = async () => {
-    //     const res = await apiGetRequest<ResponseSample, ErrorSample>('/maintenance/sample', {
-    //         header: {test: 'test3'},
-    //         queryPram: {test: 110}
-    //     })
-    //     console.log(res)
-    //     if (axios.isAxiosError(res)) {
-    //         //AxiosError
-    //         if (res.response?.status == HttpStatusCode.BadRequest) {
-    //             // badRequest
-    //             console.log('BadRequest')
-    //             const b = res.response?.data.message
-    //         } else if (res.response?.status == HttpStatusCode.Unauthorized) {
-    //             // 認証エラー
-    //             console.log('認証エラー')
-    //             const b = res.response?.data.message
-    //         } else {
-    //             // AxiosErrorその他
-    //             console.log('その他：ネットワークエラーなど')
-    //             const c = res.stack
-    //         }
-    //     } else {
-    //         //成功(AxiosResponse)
-    //         console.log(res.data.hizuke)
-    //         console.log('成功')
-    //     }
-    // }
-
-    //API呼び出しサンプルレスポンス用interface(サンプルなのでこちらに直書き）
-    // interface ResponseSample {
-    //     suuji: number,
-    //     moji: string,
-    //     hizuke: DateTime,
-    //     shingi: boolean,
-    //     suujiList: number[]
-    // }
-
-    //エラー用サンプルレスポンス
-    // interface ErrorSample {
-    //     message: string
-    // }
+    const [personNames, personSetter] = usePersons()
+    // DOM作る処理はコンポーネント内かな…
+    const nameParagraphs = personNames.map((item: string, idx: number) => <p key={idx}>{item}</p>)
 
     return (
         <div>
-            <Button onClick={useProgress()}>ローディング</Button>
+            <Button onClick={useLoader()}>ローディング</Button>
 
             <div>
-                {usersParagraph}
+                {nameParagraphs}
                 <div>
-                    <Button onClick={setUsers}>{'ユーザーのセット'}</Button>
+                    <Button onClick={personSetter.set}>{'personのセット'}</Button>
                 </div>
                 <div>
-                    <Button onClick={disposeUsers}>{'onClickDisposeUser'}</Button>
+                    <Button onClick={personSetter.dispose}>{'person破棄'}</Button>
                 </div>
             </div>
 
@@ -76,6 +31,7 @@ const Other = () => {
                 <Button onClick={notifDialogSetter.on}>{'通知ダイアログ'}</Button>
             </div>
 
+            {/* ダイアログ */}
             <CommonDialog
                 open={confDialog}
                 confirm
@@ -84,12 +40,6 @@ const Other = () => {
                 doDisagree={confDialogSetter.off}
             />
             <CommonDialog open={notifDialog} mainMessage={'通知ダイアログ'} doDisagree={notifDialogSetter.off} />
-
-            {/*<Button onClick={() => onClickDispatch('A1')}>{'非同期処理'}</Button>*/}
-
-            {/*<Button onClick={apiTest}>*/}
-            {/*    {'API呼び出し'}*/}
-            {/*</Button>*/}
         </div>
     )
 }

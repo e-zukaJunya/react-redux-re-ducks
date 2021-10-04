@@ -1,8 +1,8 @@
 import { Menu, MenuItem } from '@material-ui/core'
 import { accountMenuLabels } from 'constants/labels'
-import { pagePath } from 'constants/paths'
-import { useNavigator } from 'hooks/common/routingHooks'
+import { setPseudoAuth } from 'modules/users/reducers'
 import * as React from 'react'
+import { useDispatch } from 'react-redux'
 
 interface Props {
     // メニュー出現位置の座標となるHTML要素
@@ -13,7 +13,7 @@ interface Props {
 
 //アカウントメニュー
 const AccountMenu: React.FC<Props> = (props) => {
-    const navigator = useNavigator()
+    const dispatch = useDispatch()
     return (
         <Menu
             // 開閉状態
@@ -35,7 +35,7 @@ const AccountMenu: React.FC<Props> = (props) => {
             // #endregion
         >
             {/* ログアウト */}
-            <MenuItem onClick={() => navigator(pagePath.LOGIN)}>{accountMenuLabels.LOGOUT}</MenuItem>
+            <MenuItem onClick={() => dispatch(setPseudoAuth(false))}>{accountMenuLabels.LOGOUT}</MenuItem>
             {/* パスワード変更 */}
             <MenuItem onClick={props.onClose}>{accountMenuLabels.CHANGE_PASSWORD}</MenuItem>
         </Menu>
