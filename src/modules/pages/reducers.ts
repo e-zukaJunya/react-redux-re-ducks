@@ -16,7 +16,7 @@ const initialState: PageState = {
 
 // ページ全般に関するデータ
 const pageSlice = createSlice({
-    name: 'page',
+    name: 'pages',
     initialState,
     reducers: {
         //共通通知ダイアログを開く

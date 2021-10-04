@@ -14,7 +14,7 @@ interface hogeRes {
 // createAsyncThunkの型引数は、第2引数の関数の返却型、第2引数の関数の第1引数の型、第2引数の関数の第2引数の型
 // 第2引数の関数の第1引数はこの関数自体の実行時の引数
 export const testGet = createAsyncThunk<number, string, { state: RootState }>(
-    'user/testGet',
+    'samples/testGet',
     async (userId, thunkApi) => {
         console.log(userId)
 
@@ -28,7 +28,8 @@ export const testGet = createAsyncThunk<number, string, { state: RootState }>(
     }
 )
 
-export const testAsync = createAsyncThunk<number>('user/testGet', async () => {
+// ただの非同期処理
+export const testAsync = createAsyncThunk<number>('samples/testAsync', async () => {
     await new Promise((resolve) => {
         //1秒後に実行する処理
         setTimeout(() => {

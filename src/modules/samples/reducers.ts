@@ -19,8 +19,8 @@ const initialState: SampleState = {
 }
 
 const samplesSlice = createSlice({
-    // なんでもいいが、Storeと同じ名前の単数形でいい
-    name: 'sample',
+    // なんでもいいが、Storeと同じ名前でいい
+    name: 'samples',
     // 初期値
     initialState,
     // 同期Action(普通にStoreを更新するだけの処理を書いたり)
