@@ -16,12 +16,24 @@ export const loginLabels = {
 export const headerLabels = {
     APP_TITLE: 'アプリタイトル',
     ROOT: 'トップ',
-    PAGE2: 'フォーム',
-    PAGE3: 'リスト',
+    FORM: 'フォーム',
+    LIST: 'リスト',
     TABLE: 'テーブル',
     ASYNC: '非同期処理',
     OTHER: 'その他',
     IGNORE_ATUH: '認証不要',
+}
+
+export const formTabs = {
+    CHECKBOX: 'チェックボックス',
+    RADIO: 'ラジオボタン',
+    TEXT: 'テキストボックス',
+    INDETERMINATE_CHECK: '不定チェックボックス',
+}
+
+export const tableTabs = {
+    DISPLAY: '表示するだけ',
+    EDITABLE: '編集可能',
 }
 
 //ヘッダー

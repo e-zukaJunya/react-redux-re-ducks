@@ -1,6 +1,8 @@
 import { Button } from '@material-ui/core'
+import { headerLabels } from 'constants/labels'
+import { pagePath } from 'constants/paths'
 import { useNavigator } from 'hooks/common/routingHooks'
-import { useCurrentLocation, useTabList } from 'hooks/header/headerTabsHooks'
+import { useCurrentLocation } from 'hooks/header/headerTabsHooks'
 import * as React from 'react'
 import styles from 'styles/header/headerTabs.module.scss'
 
@@ -24,9 +26,17 @@ const Tab: React.FC<TabProps> = React.memo((props) => {
     )
 })
 
+const tabDataList = [
+    { label: headerLabels.ROOT, path: pagePath.ROOT },
+    { label: headerLabels.FORM, path: pagePath.FORMS_CHECKBOX },
+    { label: headerLabels.LIST, path: pagePath.LIST },
+    { label: headerLabels.TABLE, path: pagePath.TABLE_DISPLAY },
+    { label: headerLabels.ASYNC, path: pagePath.ASYNC },
+    { label: headerLabels.OTHER, path: pagePath.OTHER },
+    { label: headerLabels.IGNORE_ATUH, path: pagePath.IGNORE_ATUH },
+]
 //ヘッダーのタブ全体
 const HeaderTabs: React.FC = () => {
-    const tabDataList = useTabList()
     const tabList = tabDataList.map((tab) => <Tab label={tab.label} to={tab.path} key={tab.path} />)
     return <div>{tabList}</div>
 }

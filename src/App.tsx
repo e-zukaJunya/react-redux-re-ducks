@@ -43,8 +43,8 @@ const App: React.FC = () => {
                         <PrivateRoute exact path={pagePath.ROOT} key={pagePath.ROOT} component={Sample} />
                         {/* 子でさらにページをレンダリングするならexactにしない */}
                         <PrivateRoute path={pagePath.FORMS} key={pagePath.FORMS} component={Forms} />
-                        <PrivateRoute exact path={pagePath.PAGE3} key={pagePath.PAGE3} component={List} />
-                        <PrivateRoute exact path={pagePath.TABLE} key={pagePath.TABLE} component={Table} />
+                        <PrivateRoute exact path={pagePath.LIST} key={pagePath.LIST} component={List} />
+                        <PrivateRoute path={pagePath.TABLE} key={pagePath.TABLE} component={Table} />
                         <PrivateRoute exact path={pagePath.ASYNC} key={pagePath.ASYNC} component={Async} />
                         <PrivateRoute exact path={pagePath.OTHER} key={pagePath.OTHER} component={Other} />
                         {/* 認証状態を問わず表示 */}

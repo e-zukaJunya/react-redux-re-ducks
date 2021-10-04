@@ -8,9 +8,11 @@ export const pagePath = {
     FORMS_RADIO: '/forms/radio',
     FORMS_TEXT: '/forms/text',
     FORMS_INDETERMINATE_CHECKBOX: '/forms/indeterminate-checkbox',
-    PAGE3: '/page3',
+    LIST: '/list',
     ASYNC: '/async',
     TABLE: '/table',
+    TABLE_DISPLAY: '/table/display',
+    TABLE_EDITABLE: '/table/editable',
     OTHER: '/other',
     IGNORE_ATUH: '/ignore_auth',
 }
