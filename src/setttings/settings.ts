@@ -39,5 +39,4 @@ export const AWS_CONFIG = {
     },
 }
 
-export const SKIP_LOGIN = process.env.REACT_APP_STAGE === STAGES.DEV
-// export const SKIP_LOGIN = process.env.REACT_APP_STAGE === STAGES.LOCAL
+export const SKIP_LOGIN = process.env.REACT_APP_STAGE === STAGES.LOCAL

@@ -5,6 +5,7 @@ import { useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import { SKIP_LOGIN } from 'setttings/settings'
+import { AppDispatch } from 'store/configureStore'
 
 /**
  * ページ遷移用関数を返す
@@ -12,7 +13,7 @@ import { SKIP_LOGIN } from 'setttings/settings'
  * @returns ページ遷移用関数
  */
 export const useNavigator = (replaceRoute = false) => {
-    const dispatch = useDispatch()
+    const dispatch: AppDispatch = useDispatch()
     const location = useLocation()
     return useCallback(
         // 遷移先のパス

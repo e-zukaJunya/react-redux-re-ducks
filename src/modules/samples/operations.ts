@@ -11,8 +11,11 @@ import { hogeRes } from './types'
 // createAsyncThunkの型引数は、第2引数の関数の返却型、第2引数の関数の第1引数の型、第2引数の関数の第2引数の型
 // 第2引数の関数の第1引数はこの処理をdispatchするときの引数
 export const testGet = createAsyncThunk<number, string, { state: RootState }>(
+    // dispatchされるActionの名前みたいなもの
+    // 極論何でもいいが Storeの名前/関数の名前 でいいかと
     'samples/testGet',
     async (userId, thunkApi) => {
+        console.log(userId)
         const response = await axiosInstance.get<hogeRes, ApiError>(apiPath.SAMPLE)
         console.log(response)
 
@@ -26,10 +29,22 @@ export const testGet = createAsyncThunk<number, string, { state: RootState }>(
 // ただの非同期処理
 export const testAsync = createAsyncThunk<number>('samples/testAsync', async () => {
     await new Promise((resolve) => {
-        //1秒後に実行する処理
+        //指定秒数後に実行する処理
         setTimeout(() => {
             console.log('0.5秒後ログ')
             resolve(null)
+        }, 500)
+    })
+    return 1
+})
+
+// rejectの例
+export const rejectSample = createAsyncThunk<number>('samples/rejectSample', async () => {
+    await new Promise((resolve, reject) => {
+        //指定秒数後に実行する処理
+        setTimeout(() => {
+            console.log('0.5秒後ログ')
+            reject(null)
         }, 500)
     })
     return 1

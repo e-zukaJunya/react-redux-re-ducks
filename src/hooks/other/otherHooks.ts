@@ -3,12 +3,13 @@ import { disposePersons, setPersons } from 'modules/samples/reducers'
 import { personNamesSelector } from 'modules/samples/selectors'
 import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { AppDispatch } from 'store/configureStore'
 
 /**
  * loaderを試しに表示するサンプル
  */
 export const useLoader = () => {
-    const dispatch = useDispatch()
+    const dispatch: AppDispatch = useDispatch()
     return useCallback(async () => {
         dispatch(toggleLoader(true))
         await new Promise((r) => setTimeout(r, 1000))
@@ -21,7 +22,7 @@ export const useLoader = () => {
  */
 export const usePersons = () => {
     const personNames = useSelector(personNamesSelector)
-    const dispatch = useDispatch()
+    const dispatch: AppDispatch = useDispatch()
     const set = useCallback(
         () =>
             dispatch(

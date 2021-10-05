@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { testGet } from './operations'
+import { testAsync } from './operations'
 import { Persons, SampleState } from './types'
 // ↑ modules内のimportは相対でも良いかな。これらの階層が変わることは絶対にないから。
 // importの絶対パスに完全にこだわる必要は多分ない
@@ -39,29 +39,23 @@ const samplesSlice = createSlice({
     extraReducers: (builder) => {
         builder
             // 中身何もしてないのにこれらを全部用意する必要はない。必要なものだけでいい。
-            .addCase(testGet.pending, (state, action) => {
+            .addCase(testAsync.pending, (state, action) => {
                 //非同期処理中のロジック
                 console.log('途中')
                 console.log(state)
-                console.log(action.type)
                 console.log(action.payload)
-                console.log(action.meta)
             })
-            .addCase(testGet.fulfilled, (state, action) => {
+            .addCase(testAsync.fulfilled, (state, action) => {
                 //非同期処理成功時のロジック
                 console.log('成功')
                 console.log(state)
-                console.log(action.type)
                 console.log(action.payload)
-                console.log(action.meta)
             })
-            .addCase(testGet.rejected, (state, action) => {
+            .addCase(testAsync.rejected, (state, action) => {
                 //非同期処理失敗時のロジック
                 console.log('失敗')
                 console.log(state)
-                console.log(action.type)
                 console.log(action.payload)
-                console.log(action.meta)
             })
     },
 })

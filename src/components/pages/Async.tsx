@@ -1,22 +1,23 @@
 import { Button } from '@material-ui/core'
-import { testAsync, testGet } from 'modules/samples/operations'
+import { useGetSample, useJustAsync, useRejectSample } from 'hooks/async/asyncHooks'
 import React from 'react'
-import { useDispatch } from 'react-redux'
 
 const Async = () => {
-    const dispatch = useDispatch()
     // 初期処理
-    const justAsync = () => {
-        dispatch(testAsync())
-    }
-    const fetchApi = () => {
-        dispatch(testGet('test'))
-    }
+
+    // 0.5秒待つだけの非同期処理を動かす関数
+    const onClickJustAsync = useJustAsync()
+    // rejectのサンプル
+    const onClickReject = useRejectSample()
+    // API実行のサンプル
+    const onClickApiTest = useGetSample()
+
     return (
         <div>
             <h1>非同期処理</h1>
-            <Button onClick={justAsync}>0.5秒待つだけ</Button>
-            <Button onClick={fetchApi}>API呼び出し</Button>
+            <Button onClick={onClickJustAsync}>0.5秒待つだけ</Button>
+            <Button onClick={onClickApiTest}>API呼び出し</Button>
+            <Button onClick={onClickApiTest}>reject</Button>
         </div>
     )
 }
