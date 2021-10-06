@@ -50,17 +50,6 @@
     "test": "react-scripts test",
     "fmt": "prettier --write src"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest",
-      "plugin:@typescript-eslint/recommended"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "plugins": [
-      "@typescript-eslint"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
