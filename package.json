@@ -48,7 +48,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "fmt": "prettier --write src"
+    "fmt": "prettier --write src",
+    "lint": "eslint src/"
   },
   "browserslist": {
     "production": [

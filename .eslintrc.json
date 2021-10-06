@@ -4,9 +4,6 @@
         "eslint:recommended",
         // 型を必要としないプラグインの推奨ルールの有効化
         "plugin:@typescript-eslint/recommended",
-        // 以下2つはcraがデフォで入れていたもの
-        "react-app",
-        "react-app/jest",
         // prettier の条件を設定？
         "prettier"
     ],

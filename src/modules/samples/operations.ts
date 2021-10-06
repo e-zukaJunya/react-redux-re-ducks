@@ -15,7 +15,7 @@ export const testGet = createAsyncThunk<number, string, { state: RootState }>(
     // dispatchされるActionの名前みたいなもの
     // 極論何でもいいが Storeの名前/関数の名前 でいいかと
     'samples/testGet',
-    async (userId, _) => {
+    async (userId) => {
         console.log(userId)
         const response = await axiosInstance.get<hogeRes, ApiError>(apiPath.SAMPLE)
         console.log(response)
