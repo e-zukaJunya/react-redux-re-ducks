@@ -2,8 +2,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { axiosInstance } from 'common/httpClient'
 import { ApiError } from 'common/types'
 import { apiPath } from 'constants/paths'
+import { setPseudoAuth } from 'modules/users/reducers'
 import { RootState } from 'store/configureStore'
-import { dispatchedByThunk } from './reducers'
 import { hogeRes } from './types'
 
 // 非同期処理系ロジックを記載
@@ -28,22 +28,25 @@ export const testGet = createAsyncThunk<number, string, { state: RootState }>(
 )
 
 // ただの非同期処理
-export const testAsync = createAsyncThunk<number, undefined, { state: RootState }>(
-    'samples/testAsync',
-    async (_, thunkAPI) => {
+export const testAsync = createAsyncThunk<number>('samples/testAsync', async () => {
+    await new Promise((resolve) => {
+        //指定秒数後に実行する処理
+        setTimeout(() => {
+            console.log('0.5秒後ログ')
+            resolve(null)
+        }, 500)
+    })
+    return 1
+})
+
+// thunkApiの使い方
+export const testThunkApi = createAsyncThunk<void, undefined, { state: RootState }>(
+    'samples/testThunkApi',
+    (_, thunkAPI) => {
         // thunkAPIでRedux操作のAPIが提供される
-        thunkAPI.dispatch(dispatchedByThunk('test dispatch'))
+        thunkAPI.dispatch(setPseudoAuth(true))
         const state = thunkAPI.getState()
         console.log(state)
-
-        await new Promise((resolve) => {
-            //指定秒数後に実行する処理
-            setTimeout(() => {
-                console.log('0.5秒後ログ')
-                resolve(null)
-            }, 500)
-        })
-        return 1
     }
 )
 

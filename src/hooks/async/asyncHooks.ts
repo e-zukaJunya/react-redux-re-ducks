@@ -1,4 +1,4 @@
-import { rejectSample, testAsync, testGet } from 'modules/samples/operations'
+import { rejectSample, testAsync, testGet, testThunkApi } from 'modules/samples/operations'
 import { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from 'store/configureStore'
@@ -13,6 +13,8 @@ export const useJustAsync = () => {
         if (testAsync.fulfilled.match(res)) {
             console.log(res.payload)
         }
+
+        await dispatch(testThunkApi())
     }, [])
 
     return onClick
