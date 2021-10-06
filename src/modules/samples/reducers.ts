@@ -34,6 +34,9 @@ const samplesSlice = createSlice({
         disposePersons: (state) => {
             state.personList = []
         },
+        dispatchedByThunk: (_, moji: PayloadAction<string>) => {
+            console.log(moji)
+        },
     },
     // 外部で作成したAction（主に非同期Action）
     extraReducers: (builder) => {
@@ -61,4 +64,4 @@ const samplesSlice = createSlice({
 })
 
 export default samplesSlice.reducer
-export const { setPersons, disposePersons } = samplesSlice.actions
+export const { setPersons, disposePersons, dispatchedByThunk } = samplesSlice.actions

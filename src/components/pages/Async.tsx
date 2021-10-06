@@ -17,7 +17,7 @@ const Async = () => {
             <h1>非同期処理</h1>
             <Button onClick={onClickJustAsync}>0.5秒待つだけ</Button>
             <Button onClick={onClickApiTest}>API呼び出し</Button>
-            <Button onClick={onClickApiTest}>reject</Button>
+            <Button onClick={onClickReject}>reject</Button>
         </div>
     )
 }

@@ -3,6 +3,7 @@ import { axiosInstance } from 'common/httpClient'
 import { ApiError } from 'common/types'
 import { apiPath } from 'constants/paths'
 import { RootState } from 'store/configureStore'
+import { dispatchedByThunk } from './reducers'
 import { hogeRes } from './types'
 
 // 非同期処理系ロジックを記載
@@ -14,7 +15,7 @@ export const testGet = createAsyncThunk<number, string, { state: RootState }>(
     // dispatchされるActionの名前みたいなもの
     // 極論何でもいいが Storeの名前/関数の名前 でいいかと
     'samples/testGet',
-    async (userId, thunkApi) => {
+    async (userId, _) => {
         console.log(userId)
         const response = await axiosInstance.get<hogeRes, ApiError>(apiPath.SAMPLE)
         console.log(response)
@@ -27,20 +28,28 @@ export const testGet = createAsyncThunk<number, string, { state: RootState }>(
 )
 
 // ただの非同期処理
-export const testAsync = createAsyncThunk<number>('samples/testAsync', async () => {
-    await new Promise((resolve) => {
-        //指定秒数後に実行する処理
-        setTimeout(() => {
-            console.log('0.5秒後ログ')
-            resolve(null)
-        }, 500)
-    })
-    return 1
-})
+export const testAsync = createAsyncThunk<number, undefined, { state: RootState }>(
+    'samples/testAsync',
+    async (_, thunkAPI) => {
+        // thunkAPIでRedux操作のAPIが提供される
+        thunkAPI.dispatch(dispatchedByThunk('test dispatch'))
+        const state = thunkAPI.getState()
+        console.log(state)
+
+        await new Promise((resolve) => {
+            //指定秒数後に実行する処理
+            setTimeout(() => {
+                console.log('0.5秒後ログ')
+                resolve(null)
+            }, 500)
+        })
+        return 1
+    }
+)
 
 // rejectの例
 export const rejectSample = createAsyncThunk<number>('samples/rejectSample', async () => {
-    await new Promise((resolve, reject) => {
+    await new Promise((_, reject) => {
         //指定秒数後に実行する処理
         setTimeout(() => {
             console.log('0.5秒後ログ')
