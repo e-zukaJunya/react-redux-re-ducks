@@ -2,15 +2,18 @@ import { Button, TextField } from '@material-ui/core'
 import ExitToApp from '@material-ui/icons/ExitToApp'
 import { loginLabels } from 'constants/labels'
 import { pagePath } from 'constants/paths'
+import { useStringState } from 'hooks/common/commonHooks'
 import { useNavigator } from 'hooks/common/routingHooks'
-import React, { useState } from 'react'
+import React from 'react'
 import styles from 'styles/login/loginForms.module.scss'
 
 // ログイン画面
 const LoginForms: React.FC = () => {
     const navigator = useNavigator()
-    const [loginId, setLoginId] = useState('')
-    const [password, setPassword] = useState('')
+    const [loginId, setLoginId] = useStringState('')
+    const [password, setPassword] = useStringState('')
+
+    const activeBtn = !(loginId.trim() && password.trim())
     return (
         <div>
             <div className={styles.inputArea}>
@@ -35,7 +38,7 @@ const LoginForms: React.FC = () => {
                             notchedOutline: styles.inputTextFieldOutline,
                         },
                     }}
-                    onChange={(event) => setLoginId(event.target.value)}
+                    onChange={setLoginId.update}
                 />
             </div>
             <div className={styles.inputArea}>
@@ -57,7 +60,7 @@ const LoginForms: React.FC = () => {
                             notchedOutline: styles.inputTextFieldOutline,
                         },
                     }}
-                    onChange={(event) => setPassword(event.target.value)}
+                    onChange={setPassword.update}
                 />
             </div>
             <div className={styles.inputArea}>
@@ -68,7 +71,7 @@ const LoginForms: React.FC = () => {
                     // ボタン中のアイコン
                     startIcon={<ExitToApp />}
                     // 活性状態コントロール
-                    disabled={!(loginId.trim() && password.trim())}
+                    disabled={activeBtn}
                     // クリックでとりあえずトップへ
                     onClick={() => navigator(pagePath.ROOT)}
                 >
