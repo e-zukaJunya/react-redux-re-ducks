@@ -4,12 +4,12 @@
         "eslint:recommended",
         // 型を必要としないプラグインの推奨ルールの有効化
         "plugin:@typescript-eslint/recommended",
-        // prettier の条件を設定？
+        // formatterをprettierにしているので、そのルールを適用
         "prettier"
     ],
-    // 使用するプラグイン？
+    // 使用するプラグイン
     "plugins": ["@typescript-eslint"],
-    // 不明
+    // 詳細不明
     "env": {
         "browser": true,
         "node": true,
@@ -21,6 +21,7 @@
         "sourceType": "module",
         "project": "./tsconfig.json"
     },
+    // 追加ルール
     "rules": {
         // 関数やクラスの返却型を記載しないことに関する警告
         // returnの値から勝手に予測してくれればいいのでoff
