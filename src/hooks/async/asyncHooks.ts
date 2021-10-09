@@ -1,4 +1,4 @@
-import { rejectSample, testAsync, testGet, testThunkApi } from 'modules/samples/operations'
+import { rejectSample, testAsync, testGet, testRejectWithValue, testThunkApi } from 'modules/samples/operations'
 import { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from 'store/configureStore'
@@ -36,4 +36,9 @@ export const useRejectSample = () => {
         }
     }, [])
     return onClick
+}
+
+export const useRejectWithValue = () => {
+    const dispatch: AppDispatch = useDispatch()
+    return useCallback(() => dispatch(testRejectWithValue(5)), [])
 }

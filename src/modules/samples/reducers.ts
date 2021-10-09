@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { rejectSample, testAsync } from './operations'
+import { rejectSample, testAsync, testRejectWithValue } from './operations'
 import { Persons, SampleState } from './types'
 // ↑ modules内のimportは相対でも良いかな。これらの階層が変わることは絶対にないから。
 // importの絶対パスに完全にこだわる必要は多分ない
@@ -62,6 +62,15 @@ const samplesSlice = createSlice({
             .addCase(rejectSample.rejected, (_, action) => {
                 console.log('rejectSample 失敗')
                 console.log(action.payload)
+            })
+            .addCase(testRejectWithValue.rejected, (_, action) => {
+                console.log('testRejectWithValue 失敗')
+                // rejectWithValueでここに来たわけではない時もある
+                if (action.payload) {
+                    console.log(action.payload)
+                } else {
+                    console.log(action.error.message)
+                }
             })
     },
 })
