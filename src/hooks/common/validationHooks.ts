@@ -3,6 +3,8 @@ import { useCallback } from 'react'
 
 /**
  * 入力チェック
+ * この辺はなんかのパーツ抜いてきただけで精査できてない
+ * ただフックにしただけ
  */
 export const useValidation = () => {
     return useCallback(
