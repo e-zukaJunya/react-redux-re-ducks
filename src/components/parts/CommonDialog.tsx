@@ -23,6 +23,8 @@ interface Props {
     onClose: () => void
     // 通知ダイアログモード
     notif?: boolean
+    // 開いた時のデフォルトフォーカスをcontinueのほうにする
+    focusContinue?: boolean
 }
 
 export const CommonDialog: React.FC<Props> = (props) => {
@@ -34,12 +36,12 @@ export const CommonDialog: React.FC<Props> = (props) => {
             </DialogContent>
             <DialogActions>
                 {!props.notif && (
-                    <Button onClick={props.onClickContinue} color="primary">
+                    <Button onClick={props.onClickContinue} color="primary" autoFocus={props.focusContinue}>
                         {props.continueLabel}
                     </Button>
                 )}
 
-                <Button onClick={props.onClose} color="secondary" autoFocus>
+                <Button onClick={props.onClose} color="secondary" autoFocus={!props.focusContinue}>
                     {props.cancelLabel}
                 </Button>
             </DialogActions>

@@ -42,6 +42,7 @@ const Other = () => {
                 cancelLabel={'閉じる'}
                 onClickContinue={confDialogSetter.off}
                 onClose={confDialogSetter.off}
+                focusContinue
             />
             <CommonDialog
                 open={notifDialog}
