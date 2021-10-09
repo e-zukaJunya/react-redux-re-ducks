@@ -29,7 +29,6 @@ const Tab: React.FC<TabProps> = React.memo((props) => {
 const tabDataList = [
     { label: headerLabels.ROOT, path: pagePath.ROOT },
     { label: headerLabels.FORM, path: pagePath.FORMS_CHECKBOX },
-    { label: headerLabels.LIST, path: pagePath.LIST },
     { label: headerLabels.TABLE, path: pagePath.TABLE_DISPLAY },
     { label: headerLabels.ASYNC, path: pagePath.ASYNC },
     { label: headerLabels.OTHER, path: pagePath.OTHER },

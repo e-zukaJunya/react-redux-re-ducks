@@ -8,7 +8,6 @@ export const pagePath = {
     FORMS_RADIO: '/forms/radio',
     FORMS_TEXT: '/forms/text',
     FORMS_INDETERMINATE_CHECKBOX: '/forms/indeterminate-checkbox',
-    LIST: '/list',
     ASYNC: '/async',
     TABLE: '/table',
     TABLE_DISPLAY: '/table/display',

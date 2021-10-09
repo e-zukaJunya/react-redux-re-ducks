@@ -4,7 +4,6 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers'
 import Async from 'components/pages/Async'
 import Forms from 'components/pages/Forms'
 import IgnoreAuth from 'components/pages/IgnoreAuth'
-import List from 'components/pages/List'
 import Login from 'components/pages/Login'
 import Other from 'components/pages/Other'
 import Sample from 'components/pages/Sample'
@@ -43,7 +42,6 @@ const App: React.FC = () => {
                         <PrivateRoute exact path={pagePath.ROOT} key={pagePath.ROOT} component={Sample} />
                         {/* 子でさらにページをレンダリングするならexactにしない */}
                         <PrivateRoute path={pagePath.FORMS} key={pagePath.FORMS} component={Forms} />
-                        <PrivateRoute exact path={pagePath.LIST} key={pagePath.LIST} component={List} />
                         <PrivateRoute path={pagePath.TABLE} key={pagePath.TABLE} component={Table} />
                         <PrivateRoute exact path={pagePath.ASYNC} key={pagePath.ASYNC} component={Async} />
                         <PrivateRoute exact path={pagePath.OTHER} key={pagePath.OTHER} component={Other} />

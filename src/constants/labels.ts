@@ -17,7 +17,6 @@ export const headerLabels = {
     APP_TITLE: 'アプリタイトル',
     ROOT: 'トップ',
     FORM: 'フォーム',
-    LIST: 'リスト',
     TABLE: 'テーブル',
     ASYNC: '非同期処理',
     OTHER: 'その他',
