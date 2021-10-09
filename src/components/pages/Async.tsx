@@ -21,6 +21,7 @@ const Async = () => {
             <Button onClick={onClickApiTest}>API呼び出し</Button>
             <Button onClick={onClickReject}>reject</Button>
             <Button onClick={onClickRejectWithValue}>RejectWithValue</Button>
+            <p>コンソール見て</p>
         </div>
     )
 }
