@@ -15,7 +15,7 @@ import AppHeader from 'components/parts/Header'
 import Loader from 'components/parts/Loader'
 import PrivateRoute from 'components/parts/PrivateRoute'
 import { pagePath } from 'constants/paths'
-import { closeNoticeDialog } from 'modules/pages/reducers'
+import { closeGlobalDialog } from 'modules/pages/reducers'
 import { dialogSelector } from 'modules/pages/selectors'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -58,10 +58,11 @@ const App: React.FC = () => {
                     {/*表示するだけの通知ポップアップ*/}
                     <CommonDialog
                         open={dialogState.open}
-                        confirm
-                        mainMessage={dialogState.mainMessage}
-                        closeButtonMessage={dialogState.closeButtonMessage}
-                        doDisagree={() => dispatch(closeNoticeDialog())}
+                        title={dialogState.title}
+                        mainText={dialogState.mainText}
+                        cancelLabel={'閉じる'}
+                        onClose={() => dispatch(closeGlobalDialog())}
+                        notif
                     />
                 </div>
             </MuiPickersUtilsProvider>

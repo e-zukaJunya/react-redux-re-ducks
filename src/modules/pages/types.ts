@@ -1,17 +1,15 @@
 export interface PageState {
     // ダイアログ関連の値
-    noticeDialog: Dialog
+    dialog: Dialog
     // ローダーの表示
     dispLoader: boolean
 }
 
 export interface Dialog {
-    // 開閉
+    // 開閉状態
     open: boolean
-    // 通知ダイアログかどうか
-    notice?: boolean
-    // メッセージ
-    mainMessage: string
-    // 閉じるボタンの文言
-    closeButtonMessage?: string
+    // タイトル
+    title: string
+    // 本文
+    mainText: string
 }

@@ -1,49 +1,47 @@
-import { Dialog, DialogActions, DialogContent, DialogContentText } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
-import * as React from 'react'
-import styles from 'styles/common/dialog.module.scss'
-import commonStyles from 'styles/common/baseDesign.module.scss'
-import { dialogButton } from 'constants/labels'
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogContentText from '@material-ui/core/DialogContentText'
+import DialogTitle from '@material-ui/core/DialogTitle'
+import React from 'react'
 
 interface Props {
+    // 開閉状態
     open: boolean
-    // 確認ダイアログかどうか
-    confirm?: boolean
-    mainMessage: string
-    agreeButtonMessage?: string
-    disagreeButtonMessage?: string
-    closeButtonMessage?: string
-    doAgree?: () => void
-    doDisagree: () => void
+    // タイトル
+    title: string
+    // 本文
+    mainText: string
+    // 処理を続行するボタン表示文言
+    continueLabel?: string
+    // キャンセル(ただ閉じる)ボタン表示文言
+    cancelLabel: string
+    // Yesの時のアクション
+    onClickContinue?: () => void
+    // Noのときのアクション
+    onClose: () => void
+    // 通知ダイアログモード
+    notif?: boolean
 }
 
-// 共通確認ポップアップ
-const CommonDialog: React.FC<Props> = (props) => {
-    const {
-        // デフォは通知ダイアログ
-        confirm = false,
-        agreeButtonMessage = dialogButton.OK,
-        disagreeButtonMessage = dialogButton.BACK,
-        closeButtonMessage = dialogButton.CLOSE,
-    } = props
-
-    //画面表示
+export const CommonDialog: React.FC<Props> = (props) => {
     return (
-        <Dialog open={props.open} onClose={props.doDisagree}>
+        <Dialog open={props.open} onClose={props.onClose}>
+            <DialogTitle>{props.title}</DialogTitle>
             <DialogContent>
-                <div className={commonStyles.displayLinebreak}>
-                    <DialogContentText className={styles.infoDescription}>{props.mainMessage}</DialogContentText>
-                </div>
+                <DialogContentText>{props.mainText}</DialogContentText>
             </DialogContent>
-            <DialogActions className={styles.actions}>
-                <Button className={styles.agreeButton} onClick={props.doDisagree}>
-                    {confirm ? agreeButtonMessage : closeButtonMessage}
-                </Button>
-                <div style={{ display: confirm ? '' : 'none' }} className={styles.disAgreeButtonArea}>
-                    <Button className={styles.disAgreeButton} onClick={props.doDisagree}>
-                        {disagreeButtonMessage}
+            <DialogActions>
+                {!props.notif && (
+                    <Button onClick={props.onClickContinue} color="primary">
+                        {props.continueLabel}
                     </Button>
-                </div>
+                )}
+
+                <Button onClick={props.onClose} color="secondary" autoFocus>
+                    {props.cancelLabel}
+                </Button>
             </DialogActions>
         </Dialog>
     )

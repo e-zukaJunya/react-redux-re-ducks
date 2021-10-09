@@ -22,7 +22,9 @@ const Header: React.FC = () => {
                     <img src={logo} alt="logo" />
                 </ButtonBase>
 
-                <h1 className={styles.appTitle}>{headerLabels.APP_TITLE}</h1>
+                <h1 className={styles.appTitle} onClick={() => navigator(pagePath.ROOT)}>
+                    {headerLabels.APP_TITLE}
+                </h1>
 
                 {/*ログイン以外の時にタブを表示*/}
                 {path !== pagePath.LOGIN ? <HeaderTabs /> : null}

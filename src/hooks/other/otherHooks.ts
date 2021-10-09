@@ -1,4 +1,5 @@
-import { toggleLoader } from 'modules/pages/reducers'
+import { closeGlobalDialog, setGlobalDialog, toggleLoader } from 'modules/pages/reducers'
+import { Dialog } from 'modules/pages/types'
 import { disposePersons, setPersons } from 'modules/samples/reducers'
 import { personNamesSelector } from 'modules/samples/selectors'
 import { useCallback } from 'react'
@@ -36,4 +37,21 @@ export const usePersons = () => {
     const dispose = useCallback(() => dispatch(disposePersons()), [])
 
     return [personNames, { set, dispose }] as const
+}
+
+/**
+ * 全体共通ダイアログを試しに使うサンプル
+ */
+export const useGlobalDialog = () => {
+    const dispatch: AppDispatch = useDispatch()
+    const open = useCallback(() => {
+        const dialogInfo: Dialog = {
+            open: true,
+            title: '共通ダイアログ',
+            mainText: '本文',
+        }
+        dispatch(setGlobalDialog(dialogInfo))
+    }, [])
+    const close = useCallback(() => dispatch(closeGlobalDialog()), [])
+    return { open, close }
 }

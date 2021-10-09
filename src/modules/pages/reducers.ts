@@ -5,12 +5,11 @@ import { PageState } from 'modules/pages/types'
 const initialState: PageState = {
     // loaderの表示
     dispLoader: false,
-    // API呼び出しなどの結果、表示する通知ダイアログ用
-    noticeDialog: {
+    // 全体共通ダイアログ用(どの画面でも起きうるエラーの通知とか)
+    dialog: {
         open: false,
-        notice: true,
-        mainMessage: '',
-        closeButtonMessage: '',
+        title: '',
+        mainText: '',
     },
 }
 
@@ -20,12 +19,14 @@ const pageSlice = createSlice({
     initialState,
     reducers: {
         //共通通知ダイアログを開く
-        setNoticeDialog: (state, action: PayloadAction<PayloadTypes.Dialog>) => {
-            state.noticeDialog = action.payload
+        setGlobalDialog: (state, action: PayloadAction<PayloadTypes.Dialog>) => {
+            state.dialog = action.payload
         },
         //共通通知ダイアログを閉じる
-        closeNoticeDialog: (state) => {
-            state.noticeDialog.open = false
+        closeGlobalDialog: (state) => {
+            state.dialog.open = false
+            state.dialog.title = ''
+            state.dialog.mainText = ''
         },
         //loaderを開閉する
         toggleLoader: (state, action?: PayloadAction<boolean>) => {
@@ -36,4 +37,4 @@ const pageSlice = createSlice({
 })
 
 export default pageSlice.reducer
-export const { setNoticeDialog, closeNoticeDialog, toggleLoader } = pageSlice.actions
+export const { setGlobalDialog, closeGlobalDialog, toggleLoader } = pageSlice.actions
