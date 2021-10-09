@@ -3,7 +3,7 @@ import axios from 'axios'
 import { apiGetRequest } from 'common/httpClient'
 import { ApiError, AsyncThunkConfig } from 'common/types'
 import { apiPath } from 'constants/paths'
-import { setPseudoAuth } from 'modules/users/reducers'
+import { setPseudoAuth, setUser } from 'modules/users/reducers'
 import { RootState } from 'store/configureStore'
 import { hogeRes } from './types'
 
@@ -23,10 +23,9 @@ export const testGet = createAsyncThunk<number, string, AsyncThunkConfig>(
         console.log(response)
         if (!axios.isAxiosError(response)) {
             // 成功時
-            console.log(response.data)
 
             // ユーザー情報をセットとか
-            thunkAPI.dispatch(setPseudoAuth(true))
+            thunkAPI.dispatch(setUser(response.data))
         } else {
             // 失敗時
             console.log(response.code)

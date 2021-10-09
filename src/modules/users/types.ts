@@ -1,4 +1,4 @@
 export interface UsersState {
-    id: string
+    id: number
     displayName: string
 }
