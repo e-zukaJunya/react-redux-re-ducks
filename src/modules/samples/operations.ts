@@ -16,20 +16,22 @@ export const testGet = createAsyncThunk<number, string, AsyncThunkConfig>(
     // dispatchされるActionの名前
     // 極論何でもいいが Storeの名前/関数の名前 でいいかと
     'samples/testGet',
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async (userId, thunkAPI) => {
         console.log(userId)
-        const response = await apiGetRequest<hogeRes, ApiError>(apiPath.SAMPLE)
-        console.log(response)
-        if (!axios.isAxiosError(response)) {
+        const result = await apiGetRequest<hogeRes, ApiError>(apiPath.SAMPLE)
+        console.log(result)
+        if (!axios.isAxiosError(result)) {
             // 成功時
 
             // ユーザー情報をセットとか
-            thunkAPI.dispatch(setUser(response.data))
+            thunkAPI.dispatch(setUser(result.data))
         } else {
             // 失敗時
-            console.log(response.code)
-            console.log(response.response?.data.message)
+            // 作り的に中身ないことないんだけど、AxiosErrorというのはそういうものなので、静的解析で不安をなくすために分岐させとくが吉
+            if (result.response) {
+                console.log(result.response.status)
+                console.log(result.response.data.message)
+            }
         }
         return 0
     }
