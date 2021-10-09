@@ -8,6 +8,8 @@ import { Persons, SampleState } from './types'
 
 // Tips: Storeの作成単位はAPIエンドポイントのリソースと同様の単位がよさそう
 // 加えて、Webアプリとして必要な情報の単位を追加（このpagesやusersのような）
+// ほかには検索条件がたくさんあるものなどは、コンポーネント分割を頑張るとpropsバケツリレーコストが高くて辛くなるのでredux使うとか
+// local stateではなくglobal stateを使いたいと感じた時が使い時
 
 // 初期値
 const initialState: SampleState = {
