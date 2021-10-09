@@ -1,4 +1,4 @@
-import { closeGlobalDialog, setGlobalDialog, toggleLoader } from 'modules/pages/reducers'
+import { closeGlobalDialog, closeSnackbar, setGlobalDialog, setSnackbar, toggleLoader } from 'modules/pages/reducers'
 import { Dialog } from 'modules/pages/types'
 import { disposePersons, setPersons } from 'modules/samples/reducers'
 import { personNamesSelector } from 'modules/samples/selectors'
@@ -53,5 +53,15 @@ export const useGlobalDialog = () => {
         dispatch(setGlobalDialog(dialogInfo))
     }, [])
     const close = useCallback(() => dispatch(closeGlobalDialog()), [])
+    return { open, close }
+}
+
+/**
+ * スナックバー
+ */
+export const useSnackbar = () => {
+    const dispatch: AppDispatch = useDispatch()
+    const open = useCallback(() => dispatch(setSnackbar('5秒で勝手に消える')), [])
+    const close = useCallback(() => dispatch(closeSnackbar()), [])
     return { open, close }
 }

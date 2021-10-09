@@ -11,6 +11,10 @@ const initialState: PageState = {
         title: '',
         mainText: '',
     },
+    snackbar: {
+        open: false,
+        message: '',
+    },
 }
 
 // ページ全般に関するデータ
@@ -33,8 +37,17 @@ const pageSlice = createSlice({
             // 開閉状態の指定がなければ前の状態と逆にする
             state.dispLoader = action ? action.payload : !state.dispLoader
         },
+        //スナックバー表示
+        setSnackbar: (state, action: PayloadAction<string>) => {
+            state.snackbar.open = true
+            state.snackbar.message = action.payload
+        },
+        //スナックバー非表示
+        closeSnackbar: (state) => {
+            state.snackbar.open = false
+        },
     },
 })
 
 export default pageSlice.reducer
-export const { setGlobalDialog, closeGlobalDialog, toggleLoader } = pageSlice.actions
+export const { setGlobalDialog, closeGlobalDialog, toggleLoader, setSnackbar, closeSnackbar } = pageSlice.actions
