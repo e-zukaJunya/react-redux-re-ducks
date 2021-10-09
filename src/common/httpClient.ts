@@ -13,7 +13,7 @@ axiosInstance.interceptors.request.use(
         config.httpsAgent = {
             KeepAlive: true,
         }
-        // todo cognitoとか使うならトークンの取得
+        // cognitoとか使うならトークンの取得
         // const token = (await Auth.currentSession()).getIdToken().getJwtToken();
         const token = 'token'
         config.headers.Authorization = `Bearer ${token}`

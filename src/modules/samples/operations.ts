@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { axiosInstance } from 'common/httpClient'
+import axios from 'axios'
+import { apiGetRequest } from 'common/httpClient'
 import { ApiError, AsyncThunkConfig } from 'common/types'
 import { apiPath } from 'constants/paths'
 import { setPseudoAuth } from 'modules/users/reducers'
@@ -18,8 +19,19 @@ export const testGet = createAsyncThunk<number, string, AsyncThunkConfig>(
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async (userId, thunkAPI) => {
         console.log(userId)
-        const response = await axiosInstance.get<hogeRes, ApiError>(apiPath.SAMPLE)
+        const response = await apiGetRequest<hogeRes, ApiError>(apiPath.SAMPLE)
         console.log(response)
+        if (!axios.isAxiosError(response)) {
+            // 成功時
+            console.log(response.data)
+
+            // ユーザー情報をセットとか
+            thunkAPI.dispatch(setPseudoAuth(true))
+        } else {
+            // 失敗時
+            console.log(response.code)
+            console.log(response.response?.data.message)
+        }
         return 0
     }
 )

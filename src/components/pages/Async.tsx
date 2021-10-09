@@ -1,18 +1,20 @@
 import { Button } from '@material-ui/core'
-import { useGetSample, useJustAsync, useRejectSample, useRejectWithValue } from 'hooks/async/asyncHooks'
+import { useGetSample, useInit, useJustAsync, useRejectSample, useRejectWithValue } from 'hooks/async/asyncHooks'
 import React from 'react'
 
 const Async = () => {
     // 初期処理
+    useInit()
 
     // 0.5秒待つだけの非同期処理を動かす関数
     const onClickJustAsync = useJustAsync()
-    // rejectのサンプル
+    // 例外起こすサンプル
     const onClickReject = useRejectSample()
+    // rejectWithValueのサンプル
+    const onClickRejectWithValue = useRejectWithValue()
+
     // API実行のサンプル
     const onClickApiTest = useGetSample()
-
-    const onClickRejectWithValue = useRejectWithValue()
 
     return (
         <div>
