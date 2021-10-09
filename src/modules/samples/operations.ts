@@ -12,7 +12,7 @@ import { hogeRes } from './types'
 
 // createAsyncThunkの型引数は、第2引数の関数の返却型、第2引数の関数の第1引数の型、thunkAPI(第2引数の関数の第二引数としてとれるオブジェクト)の型
 // 第2引数の関数の第1引数はこの処理をdispatchするときの引数
-export const testGet = createAsyncThunk<number, string, AsyncThunkConfig>(
+export const testGet = createAsyncThunk<void, string, AsyncThunkConfig>(
     // dispatchされるActionの名前
     // 極論何でもいいが Storeの名前/関数の名前 でいいかと
     'samples/testGet',
@@ -33,7 +33,6 @@ export const testGet = createAsyncThunk<number, string, AsyncThunkConfig>(
                 console.log(result.response.data.message)
             }
         }
-        return 0
     }
 )
 
