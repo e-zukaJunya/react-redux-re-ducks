@@ -1,5 +1,4 @@
 import { Button, TextField } from '@material-ui/core'
-import ExitToApp from '@material-ui/icons/ExitToApp'
 import { loginLabels } from 'constants/labels'
 import { pagePath } from 'constants/paths'
 import { useStringState } from 'hooks/common/commonHooks'
