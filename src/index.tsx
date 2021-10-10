@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 import { Route } from 'react-router-dom'
 import reportWebVitals from 'reportWebVitals'
 import 'ress'
+import 'styles/index.scss'
 import { ENV } from 'setttings/settings'
 import { history, store } from 'store/configureStore'
 

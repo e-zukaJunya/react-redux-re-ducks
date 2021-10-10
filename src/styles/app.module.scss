@@ -1,0 +1,17 @@
+.app {
+    //中身が少なくても高さ100%
+    min-height: 100%;
+    //中身を縦ならべ
+    display: flex;
+    flex-direction: column;
+    // 改行反映
+    white-space: pre-wrap;
+
+    //各ページのメイン部分
+    .mainContent {
+        //高さは親要素いっぱいまで
+        // min-height: 100%;
+        //ヘッダーとフッターがない部分いっぱいに伸長
+        flex-grow: 1;
+    }
+}

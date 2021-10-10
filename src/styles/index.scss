@@ -1,0 +1,36 @@
+@import 'common/sizes.module';
+
+//moduleじゃない理由は#rootのセレクタを使用するため、module化すると名前がランダム文字列になってしまうため
+//全体に効かせるつもりの設定を入れるファイルであり、moduleの意味はない
+
+html,
+body,
+#root {
+    //最小の高さは画面の縦いっぱいに
+    // htmlとbodyはmin-heightがうまく働かないためheightは100％にしておく
+    // 100％だと中身がそれを超過するときhtmlの高さが画面の高さのままだが、
+    // 背景設定などはなぜか全体に聞くので問題ない
+    height: 100%;
+    // なぜかrootにもmin-heightではなくheigtで高さ指定しないと子がrootの高さをとれないのでheightで100％指定(ブラウザバグらしい？)
+    // それよりも子は.appにあてられた適切な設定からいろいろ受け継がせるので問題は無し
+}
+
+body {
+    // フォント
+    // これ参考にした https://ics.media/entry/200317/
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    // この辺はCRAデフォ
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    //基本フォントサイズ
+    font-size: $baseFontSize;
+    //アプリとしての最小幅
+    min-width: $appMinWidth;
+}
+
+// CRAデフォで入っていたもの
+// codeタグを使用する場合の見た目を指定
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}

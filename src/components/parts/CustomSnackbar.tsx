@@ -9,7 +9,6 @@ import { AppDispatch } from 'store/configureStore'
 //スナックバー
 const CustomSnackbar: React.FC = () => {
     const snackbarState = useSelector(snackbarSelector)
-    // この程度なら専用フックを作ることもないかな…
     const dispatch: AppDispatch = useDispatch()
     const handleClose = React.useCallback((_?: React.SyntheticEvent, reason?: string) => {
         // スナックバー外押下でも勝手に消えない対応

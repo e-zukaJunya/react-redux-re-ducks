@@ -21,7 +21,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 import { AppDispatch } from 'store/configureStore'
-import styles from 'styles/common/app.module.scss'
+import styles from 'styles/app.module.scss'
 
 // アプリの中で最上位の配置を担う
 // ページルーティングの設定もここで
@@ -35,21 +35,28 @@ const App: React.FC = () => {
             <MuiPickersUtilsProvider utils={LuxonUtils}>
                 <div className={styles.app}>
                     <AppHeader />
-                    <Switch>
-                        {/* 未認証の時のみ表示 */}
-                        <GuestRoute exact path={pagePath.LOGIN} key={pagePath.LOGIN} component={Login} />
-                        {/* 認証済みの時のみ表示 */}
-                        <PrivateRoute exact path={pagePath.ROOT} key={pagePath.ROOT} component={Sample} />
-                        {/* 子でさらにページをレンダリングするならexactにしない */}
-                        <PrivateRoute path={pagePath.FORMS} key={pagePath.FORMS} component={Forms} />
-                        <PrivateRoute path={pagePath.TABLE} key={pagePath.TABLE} component={Table} />
-                        <PrivateRoute exact path={pagePath.ASYNC} key={pagePath.ASYNC} component={Async} />
-                        <PrivateRoute exact path={pagePath.OTHER} key={pagePath.OTHER} component={Other} />
-                        {/* 認証状態を問わず表示 */}
-                        <Route exact path={pagePath.IGNORE_ATUH} key={pagePath.IGNORE_ATUH} component={IgnoreAuth} />
-                        {/* 存在しないパスの時はログインへ */}
-                        <GuestRoute component={Login} />
-                    </Switch>
+                    <div className={styles.mainContent}>
+                        <Switch>
+                            {/* 未認証の時のみ表示 */}
+                            <GuestRoute exact path={pagePath.LOGIN} key={pagePath.LOGIN} component={Login} />
+                            {/* 認証済みの時のみ表示 */}
+                            <PrivateRoute exact path={pagePath.ROOT} key={pagePath.ROOT} component={Sample} />
+                            {/* 子でさらにページをレンダリングするならexactにしない */}
+                            <PrivateRoute path={pagePath.FORMS} key={pagePath.FORMS} component={Forms} />
+                            <PrivateRoute path={pagePath.TABLE} key={pagePath.TABLE} component={Table} />
+                            <PrivateRoute exact path={pagePath.ASYNC} key={pagePath.ASYNC} component={Async} />
+                            <PrivateRoute exact path={pagePath.OTHER} key={pagePath.OTHER} component={Other} />
+                            {/* 認証状態を問わず表示 */}
+                            <Route
+                                exact
+                                path={pagePath.IGNORE_ATUH}
+                                key={pagePath.IGNORE_ATUH}
+                                component={IgnoreAuth}
+                            />
+                            {/* 存在しないパスの時はログインへ */}
+                            <GuestRoute component={Login} />
+                        </Switch>
+                    </div>
                     <AppFooter />
 
                     {/*Loader*/}

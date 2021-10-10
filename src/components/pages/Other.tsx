@@ -1,5 +1,4 @@
-import { Button, Fab, IconButton, Tooltip } from '@material-ui/core'
-import AddIcon from '@material-ui/icons/Add'
+import { Button, IconButton, Tooltip } from '@material-ui/core'
 import DeleteIcon from '@material-ui/icons/Delete'
 import CommonDialog from 'components/parts/CommonDialog'
 import CustomSnackbar from 'components/parts/CustomSnackbar'
@@ -40,14 +39,9 @@ const Other = () => {
             <div>
                 {/* ツールチップ */}
                 <Tooltip title="Delete">
-                    <IconButton>
+                    <IconButton aria-label="delete">
                         <DeleteIcon />
                     </IconButton>
-                </Tooltip>
-                <Tooltip title="Add">
-                    <Fab color="primary">
-                        <AddIcon />
-                    </Fab>
                 </Tooltip>
             </div>
 
