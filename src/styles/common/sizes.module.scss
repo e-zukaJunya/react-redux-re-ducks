@@ -1,10 +1,12 @@
+// 何かのサイズとか、数値系を指定
+
 //アプリとしての最小幅
 $appMinWidth: 720px;
 
 //フォント
-$smallFontSize: max(12px, 0.6rem);
-$baseFontSize: max(16px, 0.6rem);
-$LargeFontSize: max(30px, 0.6rem);
+$smallFontSize: 14px;
+$baseFontSize: 16px;
+$LargeFontSize: 32px;
 
 //ホバーしたときに透過させるときの不透明度
 $hoverOpacity: 0.8;

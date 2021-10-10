@@ -1,4 +1,5 @@
-@import '../common/constants.module';
+@import '../common/colors.module';
+@import '../common/sizes.module';
 @import '../common/baseDesign.module';
 
 //入力フォーム
@@ -8,7 +9,7 @@
 
     .inputTextFieldOutline {
         //枠線の色指定
-        border-color: $textFieldOutlineColor;
+        border-color: $normalBorder;
     }
 
     .loginButton {

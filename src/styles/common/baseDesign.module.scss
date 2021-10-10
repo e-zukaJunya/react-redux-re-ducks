@@ -1,6 +1,6 @@
-@import 'constants.module';
+@import 'colors.module';
 
-// region ボタン 形とか
+// #region ボタン 形とか
 @mixin smallButtonSize {
     width: 150px;
     height: 40px;
@@ -19,12 +19,12 @@
     font-size: $LargeFontSize;
 }
 
-//endregion
+// #endregion
 
-// region アプリ内の基本的なボタンの背景・文字色
+// #region アプリ内の基本的なボタンの背景・文字色
 @mixin basePositiveButtonColor {
     background-color: rgba(0, 0, 205, 1);
-    color: $mainWhite;
+    color: $colorWhite;
 
     &:hover {
         background-color: rgba(0, 0, 205, 1);
@@ -37,7 +37,7 @@
 
 @mixin baseNegativeButtonColor {
     background-color: rgba(120, 120, 120, 1);
-    color: $mainWhite;
+    color: $colorWhite;
 
     &:hover {
         background-color: rgba(120, 120, 120, 1);
@@ -50,10 +50,10 @@
 
 @mixin baseDisabledButtonColor {
     background-color: rgba(200, 200, 200, 1);
-    color: $mainWhite;
+    color: $colorWhite;
 }
 
-//endregion
+// #endregion
 
 //改行の反映
 .displayLinebreak {

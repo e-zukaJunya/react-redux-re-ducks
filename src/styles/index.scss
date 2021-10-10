@@ -13,6 +13,9 @@ body,
     height: 100%;
     // なぜかrootにもmin-heightではなくheigtで高さ指定しないと子がrootの高さをとれないのでheightで100％指定(ブラウザバグらしい？)
     // それよりも子は.appにあてられた適切な設定からいろいろ受け継がせるので問題は無し
+
+    //基本フォントサイズはHTMLに効かせたい
+    font-size: $baseFontSize;
 }
 
 body {
@@ -22,11 +25,6 @@ body {
     // この辺はCRAデフォ
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
-    //基本フォントサイズ
-    font-size: $baseFontSize;
-    //アプリとしての最小幅
-    min-width: $appMinWidth;
 }
 
 // CRAデフォで入っていたもの

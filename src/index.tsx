@@ -7,9 +7,9 @@ import { Provider } from 'react-redux'
 import { Route } from 'react-router-dom'
 import reportWebVitals from 'reportWebVitals'
 import 'ress'
-import 'styles/index.scss'
 import { ENV } from 'setttings/settings'
 import { history, store } from 'store/configureStore'
+import 'styles/index.scss'
 
 // Amplifyの設定適用
 // Amplify.configure(AWS_CONFIG)

@@ -1,3 +1,5 @@
+// 色指定
+
 //基本の色系（このアプリにおける"赤"と言えば、みたいなイメージの定義。使ってみてよくなかったらこういう定義はやめる）
 $colorBlue: rgba(0, 0, 205, 1);
 $colorWhite: rgba(255, 255, 255, 1);
@@ -11,15 +13,8 @@ $disabledButtonBg: rgba(150, 150, 150, 1);
 // キャンセルや削除のボタン
 $CancelButtonBg: rgba(120, 120, 120, 1);
 
-//アプリのテーマカラー
-$mainColor: rgba(0, 0, 205, 1);
-
-//全体でよく使う枠線設定
-$normalBorder: solid $colorBlack 1px;
-
 // エラーメッセージの文字
 $errorMessageColor: $colorRed;
 
-//コンテンツの公開状態ごとの色
-$publicStateColor: rgb(0, 0, 205);
-$privateStateColor: rgb(250, 50, 50);
+//全体でよく使う枠線設定
+$normalBorder: solid $colorBlack 1px;

@@ -1,6 +1,11 @@
-@import '../common/constants.module';
+@import '../common/colors.module';
 
 .iconButton {
-    //これで人の背景が白くなる
-    color: $mainWhite;
+    span {
+        //これで人の背景が白くなる
+        // 通常iconButtonのレベルにつければいいが、ressが上書きしてくるためその下のspanに適用
+        color: $colorWhite;
+    }
+    // 余白とって位置調整
+    padding: 15px;
 }

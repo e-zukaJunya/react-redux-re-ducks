@@ -1,11 +1,13 @@
-@import '../common/constants.module';
+@import '../common/colors.module';
 
 .header {
     //両端にくっつける形で中身を均等配置
     display: flex;
     justify-content: space-between;
+    //縦位置の中心に揃える
+    align-items: center;
 
-    background-color: $mainColor;
+    background-color: rgba(0, 159, 226, 1);
 
     min-height: 70px;
 
@@ -33,7 +35,7 @@
 
         //アプリタイトル
         .appTitle {
-            color: $mainWhite;
+            color: $colorWhite;
             //デフォの上下マージンを消して左右に良い感じに余白
             margin: 0 10px;
             //何となくのサイズ
