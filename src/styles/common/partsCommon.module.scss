@@ -41,7 +41,7 @@
 
 // アプリ内のキャンセルボタンの背景・文字色(活性状態)
 @mixin baseCancelButtonColor {
-    background-color: $CancelButtonBg;
+    background-color: $cancelButtonBg;
     color: $colorWhite;
 
     //非活性時

@@ -1,0 +1,50 @@
+@import 'colors.module';
+@import 'sizes.module';
+
+// #region ボタン
+
+// #region サイズ
+@mixin smallButtonSize {
+    width: 100px;
+    height: 30px;
+}
+
+@mixin mediumButtonSize {
+    width: 200px;
+    height: 50px;
+}
+
+@mixin largeButtonSize {
+    width: 300px;
+    height: 60px;
+}
+// #endregion
+
+// #region 基礎スタイル
+// 通常ボタン
+@mixin buttonBase {
+    background-color: $colorBlue;
+    color: $colorWhite;
+
+    //非活性時
+    &:disabled {
+        background-color: $disabledButtonBg;
+        color: $colorWhite;
+    }
+
+    //ホバー時
+    &:hover {
+        //少し透明にする
+        opacity: $hoverOpacity;
+    }
+}
+
+// キャンセルボタン
+@mixin cancelButtonBase {
+    @include buttonBase();
+    background-color: $CancelButtonBg;
+    color: $colorWhite;
+}
+// #endregion
+
+// #endregion

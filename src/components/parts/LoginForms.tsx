@@ -68,8 +68,6 @@ const LoginForms: React.FC = () => {
                     className={styles.loginButton}
                     // 塗りつぶされたボタン
                     variant="contained"
-                    // ボタン中のアイコン
-                    startIcon={<ExitToApp />}
                     // 活性状態コントロール
                     disabled={activeBtn}
                     // クリックでとりあえずトップへ

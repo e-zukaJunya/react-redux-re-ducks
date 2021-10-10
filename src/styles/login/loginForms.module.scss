@@ -1,6 +1,6 @@
 @import '../common/colors.module';
 @import '../common/sizes.module';
-@import '../common/baseDesign.module';
+@import '../common/modules.module';
 
 //入力フォーム
 .inputArea {
@@ -14,6 +14,6 @@
 
     .loginButton {
         @include mediumButtonSize;
-        @include basePositiveButtonColor;
+        @include buttonBase;
     }
 }
